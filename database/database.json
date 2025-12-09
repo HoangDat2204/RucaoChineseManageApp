@@ -540,6 +540,23 @@
                         ],
                         "Absence"
                     ],
+                    "ad288b17-d2ca-417a-9a58-7aedced37077": [
+                        "2025-12-09",
+                        "18:59:38",
+                        "20:40:01",
+                        "1 giờ 40 phút 23 giây",
+                        [
+                            "ngọc hân",
+                            "2273201081253 - NGUYỄN NGỌC QUỲNH NHƯ - 71K28QHCC21",
+                            "Vũ Ngọc",
+                            "Kim Phuong",
+                            "Vũ Ngọc",
+                            "阮庆河",
+                            "Hà",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
+                    ],
                     "cb85d7c7-1120-4aeb-ad6b-d9b071686e55": [
                         "2025-11-25",
                         "18:56:09",
@@ -608,6 +625,28 @@
                         ],
                         false,
                         "WrongTime"
+                    ],
+                    "4605d22d-1189-4c8f-9270-ab35e469959f": [
+                        "2025-12-09",
+                        "18:59:25",
+                        "18:59:32",
+                        "0 giờ 0 phút 7 giây",
+                        [
+                            "2273201081253 - NGUYỄN NGỌC QUỲNH NHƯ - 71K28QHCC21"
+                        ],
+                        false,
+                        "EndSoon"
+                    ],
+                    "5f586cff-58f4-4616-ad12-b0b41a6cc0ef": [
+                        "2025-12-09",
+                        "18:55:56",
+                        "18:55:59",
+                        "0 giờ 0 phút 3 giây",
+                        [
+                            "2273201081253 - NGUYỄN NGỌC QUỲNH NHƯ - 71K28QHCC21"
+                        ],
+                        false,
+                        "EndSoon"
                     ],
                     "627201a3-478b-46a9-858c-bff947bc5ae8": [
                         "2025-12-02",
@@ -1786,6 +1825,18 @@
                         false,
                         "WrongTime"
                     ],
+                    "3a23f875-af1a-4779-b30d-a026faa0f1af": [
+                        "2025-12-09",
+                        "18:28:33",
+                        "19:58:15",
+                        "1 giờ 29 phút 42 giây",
+                        [
+                            "Như Phúc Đinh Hoàng",
+                            "TRUONG TUYET MAI"
+                        ],
+                        true,
+                        "WrongTime"
+                    ],
                     "483d1d17-7c54-4436-816b-7429c4251e5a": [
                         "2025-11-11",
                         "12:57:31",
@@ -1976,6 +2027,23 @@
                             "Thị Kiều Trinh Nguyễn",
                             "保 安",
                             "Jie Qiu"
+                        ],
+                        "Normal"
+                    ],
+                    "5b1b1f1d-b15c-4f25-a27e-5c8a290847d8": [
+                        "2025-12-09",
+                        "18:59:25",
+                        "20:37:32",
+                        "1 giờ 38 phút 7 giây",
+                        [
+                            "Nhựt uyên",
+                            "Gia Mây",
+                            "Anh Minh",
+                            "Thị Kiều Trinh Nguyễn",
+                            "Pham Anh",
+                            "jie qiu",
+                            "保 安",
+                            "Phúc Toàn Đặng"
                         ],
                         "Normal"
                     ],

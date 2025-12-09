@@ -73,6 +73,43 @@
       }
     ]
   },
+  "Rucao_KL_Cơ bản tháng 11": {
+    "teacher": "Khánh Ly",
+    "class": [
+      {
+        "result": "15 tháng 11, 2025, Không có thời gian, B1K1",
+        "date": "15 tháng 11, 2025"
+      },
+      {
+        "result": "18 tháng 11, 2025, Không có thời gian, B2K1",
+        "date": "18 tháng 11, 2025"
+      },
+      {
+        "result": "22 tháng 11, 2025, Không có thời gian, B3K1",
+        "date": "22 tháng 11, 2025"
+      },
+      {
+        "result": "25 tháng 11, 2025, Không có thời gian, B4K1",
+        "date": "25 tháng 11, 2025"
+      },
+      {
+        "result": "29 tháng 11, 2025, Không có thời gian, B5K1",
+        "date": "29 tháng 11, 2025"
+      },
+      {
+        "result": "2 tháng 12, 2025, Không có thời gian, B6K1",
+        "date": "2 tháng 12, 2025"
+      },
+      {
+        "result": "6 tháng 12, 2025, Không có thời gian, B7K1",
+        "date": "6 tháng 12, 2025"
+      },
+      {
+        "result": "9 tháng 12, 2025, Không có thời gian, B8K1",
+        "date": "9 tháng 12, 2025"
+      }
+    ]
+  },
   "Rucao_KY_Tiên & Linh": {
     "teacher": "Kim Yến",
     "class": [

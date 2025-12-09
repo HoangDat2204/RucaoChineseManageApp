@@ -1,0 +1,77 @@
+<!-- FILE: backend/loading.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RucaoChinese Dashboard Loading</title>
+    <style>
+        body {
+            /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
+            background-image:  url('../img/loading_background.jpg');
+            background-position: center;
+            background-size: cover;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center; /* Căn xuống dưới cùng */
+            align-items: flex-end; 
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+            user-select: none;
+        }
+        .container {
+            text-align: center;
+            width: 800px;
+        }
+        h3 { color: #2c3e50; margin-bottom: 20px; font-weight: 600; }
+        .progress-bg {
+            width: 100%;
+            height: 15px;
+            background-color: #e9ecef;
+            border-radius: 7.5px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        .progress-bar {
+            /* background-image: linear-gradient(120deg, #b0a5a5 0%, #ebedee 100%); */
+            background-image:  url('../img/loading 1.png');
+            width: 0%;
+            height: 100%;
+            border-radius: 7.5px;
+            background-color: #3498db;
+            transition: width 0.4s ease;
+        }
+        .status-text {
+            text-align:flex-start;
+            color: #7f8c8d;
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Đang khởi động...</h3>
+        <div class="progress-bg">
+            <div id="progress" class="progress-bar"></div>
+        </div>
+        <div id="status" class="status-text">Đang chuẩn bị dữ liệu...</div>
+    </div>
+
+    <script>
+        // Hàm này được gọi từ Python
+        function setProgress(percent, text) {
+            document.getElementById('progress').style.width = percent + '%';
+            if (text) {
+                document.getElementById('status').innerText = text;
+            }
+        }
+
+        // Khi Webview sẵn sàng, báo cho Python biết để bắt đầu chạy các hàm
+        window.addEventListener('pywebviewready', function() {
+            pywebview.api.start_loading();
+        });
+    </script>
+</body>
+</html>
