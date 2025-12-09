@@ -76,7 +76,6 @@ h1 {
     width: auto;    /* Tự động tính toán chiều rộng để giữ đúng tỷ lệ */
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px; /* Khoảng cách giữa logo và container bên dưới */
 }
 
 /* Sửa lại .container để đẩy nó xuống và xóa margin-top cũ */
