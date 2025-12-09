@@ -15,7 +15,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('../img/Cover.png');    
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('../img/Cover.png');    
 
     /* 2. Thuộc tính để ảnh nền đẹp hơn */
     background-size: cover;          /* Phóng to/thu nhỏ ảnh để lấp đầy màn hình */

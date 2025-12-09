@@ -8,7 +8,7 @@
     <style>
         body {
             /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
-            background-image:  url('../img/loading_background.jpg');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('../img/loading_background.jpg');
             background-position: center;
             background-size: cover;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -28,7 +28,7 @@
         .progress-bg {
             width: 100%;
             height: 15px;
-            background-color: #e9ecef;
+            background-color: #ffffff;
             border-radius: 7.5px;
             overflow: hidden;
             margin-bottom: 5px;
@@ -39,7 +39,9 @@
             width: 0%;
             height: 100%;
             border-radius: 7.5px;
-            background-color: #3498db;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.3), /* Bóng ngoài cùng, mờ nhất */
+                inset 0 0 5px rgba(0,0,0,0.1),  /* Bóng giữa, đậm hơn */
+                inset 0 0 7px rgba(0,0,0,0.05);  /* Bóng trong cùng, gần element nhất */
             transition: width 0.4s ease;
         }
         .status-text {
