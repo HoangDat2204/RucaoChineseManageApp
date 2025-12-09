@@ -1,0 +1,1577 @@
+/* FILE MỚI: css/style_quanlylop.css */
+
+@font-face {
+    /* 1. Đặt một cái tên để bạn sẽ gọi sau này */
+    font-family: 'Cocomat'; 
+
+    /* 2. Cung cấp đường dẫn đến file font */
+    /* './' có nghĩa là bắt đầu từ thư mục hiện tại của file CSS */
+    src: url('../font/CocomatLight-ZXY3.ttf') format('woff2'); 
+    /* Nếu file CSS nằm cùng cấp với thư mục fonts, dùng: url('./fonts/...') */
+
+    /* 3. (Tùy chọn nhưng rất nên có) Chỉ định các thuộc tính cho font này */
+    font-weight: normal; /* Hoặc 400 */
+    font-style: normal;
+    font-display: swap; /* Giúp hiển thị nhanh hơn */
+}
+body {
+    /* 1. Đặt ảnh nền */
+    /* Thay 'images/background.jpg' bằng đường dẫn chính xác đến ảnh của bạn */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url('../img/Cover.png');
+
+    /* 2. Thuộc tính để ảnh nền đẹp hơn */
+    background-size: cover;          /* Phóng to/thu nhỏ ảnh để lấp đầy màn hình */
+    background-position: center;     /* Căn giữa ảnh nền */
+    background-repeat: no-repeat;    /* Không lặp lại ảnh */
+    background-attachment: fixed;    /* Cố định ảnh nền khi cuộn trang */
+
+    /* Các thuộc tính cũ của body */
+    font-family: 'Nunito', sans-serif; /* Dùng Nunito làm font chính cho trang */
+    padding: 20px;
+    line-height: 1.6;
+    margin: 0; /* Đảm bảo không có khoảng trắng thừa quanh trang */
+}
+
+
+.logo {
+    display: block; /* Bắt buộc để căn giữa bằng margin */
+    height: 200px;  /* Chiều cao của logo, bạn có thể thay đổi */
+    width: auto;    /* Tự động tính toán chiều rộng để giữ đúng tỷ lệ */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Nút quay lại trang chủ (tái sử dụng) */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.back-button svg {
+    margin-right: 8px;
+}
+
+
+/* Container chính của trang quản lý */
+.class-manager-container {
+    display: flex;
+    height: 70vh;
+}
+
+/* --- 1. THANH BÊN (SIDEBAR) --- */
+.teacher-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    box-sizing: border-box;
+    
+    /* THÊM CÁC DÒNG NÀY VÀO */
+    border-radius: 16px;    /* Bo góc trên bên phải */
+    box-shadow: 2px 0 15px rgba(0,0,0,0.05); /* Thêm đổ bóng nhẹ cho đẹp */
+}
+
+.sidebar-header {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.teacher-list {
+    list-style: none;
+    padding: 0;
+    padding-top: 12px;;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.teacher-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+    width: 85%;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.teacher-item:hover {
+    background-color: #f1f3f5;
+}
+/* Nút thêm giáo viên (màu đỏ) */
+.add-teacher-btn {
+    color: #dc3545;
+    font-weight: 700;
+}
+.add-teacher-btn .icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-right: 10px;
+}
+/* Các giáo viên (màu xanh) */
+.teacher-item .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #495057;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 12px;
+}
+.teacher-item .name {
+    font-weight: 600;
+    margin-right: 20px;
+}
+/* Trạng thái được chọn */
+.teacher-item.active {
+    background-color: #e3f2fd;
+    color: #0d6efd;
+}
+.teacher-item.active .avatar {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* --- 2. KHU VỰC NỘI DUNG CHÍNH --- */
+.main-content {
+    flex-grow: 1;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    overflow-y: auto;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Hiệu ứng khi di chuột vào */
+.btn-primary:not(:disabled):hover {
+    transform: translateY(-2px); /* Nâng nút lên một chút */
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Hiệu ứng khi bấm vào (Bound/Nảy) */
+.btn-primary:not(:disabled):active {
+    transform: translateY(1px); /* Ấn nút xuống */
+    box-shadow: none; /* Bỏ bóng đổ */
+}
+
+/* Style khi nút bị vô hiệu hóa */
+.btn-primary:disabled {
+    background-color: #cccccc;
+    border-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+/* Lưới danh sách lớp (màu vàng) */
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+.class-card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 10px 14px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 5px solid #ffc107; /* Màu vàng */
+}
+.class-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.class-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+.class-card p {
+    margin: 0 0 15px 0;
+    color: #6c757d;
+}
+.class-card .class-type {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.class-type.hsk { background-color: #cfe2ff; color: #084298; }
+.class-type.giaotiep { background-color: #d1e7dd; color: #0f5132; }
+
+/* Khung chi tiết lớp (màu tím) */
+#class-detail-section {
+    border-radius: 16px;
+    padding: 30px;
+    background-color: #fff;
+}
+.back-to-grid-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0d6efd;
+    cursor: pointer;
+}
+.class-detail-content {
+    margin-top: 20px;
+}
+
+/* Lưới thông tin tổng quan */
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    background-color: #f6f6f6;
+    padding: 20px;
+    border-radius: 12px;
+}
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+.info-item .label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.info-item .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+/* Thanh Tabs */
+.detail-tabs {
+    display: flex;
+    border-bottom: 2px solid #dee2e6;
+    margin-bottom: 25px;
+}
+.tab-link {
+    background: none;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; /* Dịch lên để đè lên border chính */
+}
+.tab-link.active, .tab-link:hover {
+    color: #0d6efd;
+}
+.tab-link.active {
+    border-color: #0d6efd;
+}
+
+/* Nội dung Tabs */
+.tab-content {
+    display: none; /* Ẩn tất cả các tab */
+}
+.tab-content.active {
+    display: block; /* Chỉ hiện tab đang active */
+}
+
+/* Style chung cho các danh sách trong tab */
+.detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.detail-list .list-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.detail-list .list-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Danh sách thành viên */
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Khoảng cách giữa các card thành viên */
+}
+
+/* Card cho mỗi thành viên */
+.member-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    text-decoration: none;
+}
+
+/* Hiệu ứng hover cho card */
+.member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-color: #ced4da;
+}
+
+/* Thông tin chính của thành viên (avatar và tên) */
+.member-info {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Chiếm 1 phần không gian */
+    min-width: 150px;
+}
+
+.member-card .member-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Khu vực hiển thị học phí */
+.tuition-status-wrapper {
+    flex: 2; /* Rộng gấp đôi khu vực tên */
+    min-width: 250px;
+    overflow-x: auto; /* Kích hoạt thanh trượt ngang nếu cần */
+    padding-bottom: 10px; /* Tạo không gian cho thanh trượt */
+}
+
+/* Container cho các item học phí */
+.tuition-status-list {
+    display: flex;
+    gap: 15px;
+}
+
+/* Mỗi item học phí (K1: Done) */
+.tuition-item {
+    flex-shrink: 0; /* Ngăn các item bị co lại */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 8px;
+    width: 80px; /* Chiều rộng cố định */
+}
+
+.tuition-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #adb5bd; /* Viền màu xám khi chưa tick */
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    background-color: #fff; /* Nền trắng khi chưa tick */
+}
+
+/* Hiệu ứng khi di chuột vào checkbox */
+.tuition-item input[type="checkbox"]:hover {
+    border-color: #0d6efd; /* Viền chuyển sang màu xanh dương */
+}
+
+/* Trạng thái KHI ĐÃ ĐƯỢC TICK */
+.tuition-item input[type="checkbox"]:checked {
+    background-color: #0d6efd; /* Nền chuyển thành màu xanh dương */
+    border-color: #0d6efd;    /* Viền cũng chuyển thành màu xanh dương */
+}
+
+/* Tạo dấu tích màu trắng bằng pseudo-element */
+.tuition-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 14px;
+    color: white; /* Dấu tích màu trắng */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.tuition-item .course-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+.tuition-item .status-badge {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+/* Style cho các trạng thái học phí */
+.tuition-item .status-badge.done {
+    color: #198754; /* Xanh lá */
+}
+.tuition-item .status-badge.not-done {
+    color: #dc3545; /* Đỏ */
+}
+
+/* Style cho thành viên đã nghỉ học (isStudying: False) */
+.member-card.inactive-student {
+    background-color: #f1f3f5; /* Nền màu xám nhạt */
+    opacity: 0.6;              /* Làm mờ toàn bộ card */
+}
+
+
+
+/* Làm mờ avatar */
+
+
+/* Bỏ hiệu ứng hover để người dùng biết nó không còn quan trọng */
+.member-card.inactive-student:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: default; /* Đổi con trỏ chuột */
+}
+
+.member-card.inactive-student:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: default;
+}
+
+.view-detail-btn {
+    background: #f1f3f5;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #495057;
+    transition: background-color 0.2s;
+}
+.view-detail-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* Danh sách buổi học */
+.session-info { font-weight: 600; }
+.session-date { margin-left: auto; color: #6c757d; margin-right: 15px; }
+
+/* Danh sách buổi nghỉ */
+.break-date { font-weight: bold; }
+.break-reason {  color: #6c757d; }
+
+
+
+/* Danh sách bài tập */
+.homework-list {
+    padding-left: 20px;
+    list-style: decimal;
+}
+.homework-list li {
+    padding: 10px 0;
+}
+
+.status-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: left; /* Căn giữa toàn bộ */
+    gap: 15px;
+    margin-top: 15px; /* Kéo lên gần tiêu đề hơn */
+    margin-bottom: 25px;
+}
+.status-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+/* Style cho .switch và .slider giữ nguyên */
+
+
+/* Lưới thông tin tổng quan (cập nhật) */
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Tăng minmax để có không gian */
+    gap: 25px;
+    background-color: #f6f6f6;
+    padding-left: 25px;  
+    padding-right: 25px;
+    border-radius: 12px;
+}
+
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex-grow: 1;
+}
+
+/* Nút bật/tắt (Toggle Switch) */
+.status-toggle-container { text-align: center; }
+.switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: #28a745; }
+input:focus + .slider { box-shadow: 0 0 1px #28a745; }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
+/* Style cho card lớp học không hoạt động */
+.class-card.inactive {
+    border-left-color: #6c757d; /* Màu xám */
+    opacity: 0.6;
+}
+.class-card.inactive::after {
+    content: 'Đã nghỉ';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+
+/* --- Cập nhật style các Tab --- */
+.tab-content-wrapper { min-height: 300px; } /* Đảm bảo có chiều cao tối thiểu */
+
+/* Tab Thành viên */
+.member-list .list-item { align-items: center; }
+.member-list .member-name { margin-right: auto; }
+
+/* Tab Buổi đã học */
+.session-filter {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* Style cho mỗi item trong danh sách buổi học */
+.session-list .list-item {
+    display: flex;                /* << BẮT BUỘC: Biến li thành flex container */
+    align-items: flex-start;      /* Căn các cột theo cạnh trên */
+    gap: 20px;                    /* Khoảng cách giữa các cột */
+    padding: 15px;
+    flex-wrap: wrap;              /* Cho phép các cột xuống dòng trên màn hình nhỏ */
+    
+    /* Các style nền, viền khác */
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Định nghĩa style cho CÁC CỘT (các div con trực tiếp của .list-item) */
+.session-list .session-title,
+.session-list .session-date,
+.session-list .session-homework {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Cột 1: Buổi học */
+.session-list .session-title {
+    flex: 1.5 1 120px; /* flex-grow | flex-shrink | flex-basis (quan trọng) */
+    font-weight: 700;
+}
+
+/* Cột 2: Ngày */
+.session-list .session-date {
+    flex: 1.5 1 120px;
+    color: #6c757d;
+}
+
+/* Cột 3: Bài tập */
+.session-list .session-homework {
+    flex: 3 1 200px; /* Rộng nhất */
+    align-items: flex-start;
+}
+.filter-btn {
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 20px; /* Bo tròn để thành dạng "viên thuốc" */
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+/* Style cho nút đang được chọn (active) */
+.filter-btn.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 2px 5px rgba(13, 110, 253, 0.3);
+}
+
+.session-filter {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* Style cho mỗi item trong danh sách buổi học */
+.session-list .list-item {
+    display: flex;
+    align-items: flex-start; /* Căn các cột theo cạnh trên */
+    gap: 20px; /* Khoảng cách giữa các cột */
+    padding: 15px;
+    flex-wrap: wrap; /* Cho phép wrap trên màn hình nhỏ */
+}
+
+/* Định nghĩa 3 cột */
+.session-list .session-title,
+.session-list .session-date,
+.session-list .session-homework {
+    display: flex; /* Dùng flex để căn icon và text */
+    align-items: center;
+    gap: 8px;
+}
+
+/* Cột 1: Buổi học */
+.session-list .session-title {
+    flex: 1.5; /* Rộng hơn các cột khác một chút */
+    min-width: 120px;
+    font-weight: 700;
+}
+
+/* Cột 2: Ngày */
+.session-list .session-date {
+    flex: 1.5;
+    min-width: 120px;
+    color: #6c757d;
+}
+
+/* Cột 3: Bài tập (phức tạp nhất) */
+.session-list .session-homework {
+    flex: 3; /* Rộng nhất */
+    min-width: 200px;
+    align-items: flex-start; /* Căn icon từ trên xuống */
+}
+
+/* Icon cho mỗi cột (tùy chọn nhưng làm đẹp hơn) */
+.session-list .icon {
+    flex-shrink: 0;
+    color: #adb5bd;
+}
+
+/* Nội dung bài tập */
+.session-homework .homework-content {
+    white-space: nowrap; /* Ngăn text xuống dòng */
+    overflow: hidden; /* Ẩn phần text thừa */
+    text-overflow: ellipsis; /* Hiển thị dấu "..." */
+    max-width: 300px; /* Giới hạn chiều rộng tối đa, có thể điều chỉnh */
+    transition: all 0.3s ease;
+}
+
+/* Nút "Xem thêm" */
+.expand-homework-btn {
+    background: none;
+    border: none;
+    color: #0d6efd;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 2px 5px;
+    margin-left: 10px;
+}
+
+/* Trạng thái khi bài tập được mở rộng */
+.session-homework.expanded .homework-content {
+    white-space: normal; /* Cho phép text xuống dòng */
+    max-width: 100%; /* Bỏ giới hạn chiều rộng */
+}
+
+.session-list-header {
+    display: flex;
+    gap: 20px;
+    padding: 0 15px 10px 15px; /* Căn lề giống .list-item */
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 10px;
+}
+.session-list-header .header-item {
+    font-weight: 700;
+    color: #403f3f;
+    font-size: 1 rem;
+}
+
+/* Áp dụng lại tỷ lệ flex giống như các cột nội dung */
+.session-list-header .header-item.title {
+    flex: 1.5 1 120px;
+}
+.session-list-header .header-item.date {
+    flex: 1.5 1 120px;
+}
+.session-list-header .header-item.homework {
+    flex: 3 1 200px;
+}
+
+.list-controls-header {
+    display: flex;
+    justify-content: space-between; /* Đẩy 2 phần tử ra 2 phía */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 10px;
+    padding-right: 15px; /* Thêm padding để filter không dính sát lề */
+}
+
+/* Header danh sách (giữ nguyên tỷ lệ flex) */
+.session-list-header {
+    flex-grow: 1; /* Cho phép header chiếm không gian còn lại */
+    padding: 0 0 10px 15px; /* Điều chỉnh lại padding */
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 0;
+}
+
+/* Bộ lọc (không cần căn lề nữa) */
+.session-filter {
+    margin-bottom: 0;
+    justify-content: flex-end;
+    flex-shrink: 0; /* Ngăn bộ lọc bị co lại */
+    padding-bottom: 10px; /* Căn với đường kẻ dưới của header */
+}
+
+.member-table-container {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    overflow: auto; /* Kích hoạt thanh cuộn cho cả 2 chiều */
+    max-height: 60vh; /* Giới hạn chiều cao để có thanh cuộn dọc */
+    background-color: #fff;
+}
+
+/* Hàng tiêu đề (Header) */
+.member-table-header {
+    display: flex;
+    position: sticky; /* << DÍNH */
+    top: 0;           /* Dính vào cạnh trên */
+    z-index: 2;       /* Nằm trên các hàng nội dung */
+    background-color: #f8f9fa;
+}
+
+/* Hàng dữ liệu cho mỗi học viên */
+.member-table-row {
+    display: flex;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Style chung cho các ô (cell) */
+.member-table-cell {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Ngăn các ô bị co lại */
+}
+
+/* Ô đầu tiên của header (trống) và ô thông tin học viên */
+.header-info-cell,
+.member-info-cell {
+    width: 250px; /* Chiều rộng cố định cho cột đầu tiên */
+    position: sticky; /* << DÍNH */
+    left: 0;          /* Dính vào cạnh trái */
+    z-index: 1;       /* Nằm trên các ô học phí */
+    background-color: #fff; /* Cần có nền để che nội dung bên dưới */
+}
+.header-info-cell {
+    background-color: #f8f9fa; /* Nền của header */
+    font-weight: 700;
+    color: #495057;
+}
+.member-table-container {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    overflow: auto; /* Kích hoạt thanh cuộn cho cả 2 chiều */
+    max-height: 60vh; /* Giới hạn chiều cao để có thanh cuộn dọc */
+    background-color: #fff;
+}
+
+/* Hàng tiêu đề (Header) */
+.member-table-header {
+    display: flex;
+    position: sticky; /* << DÍNH */
+    top: 0;           /* Dính vào cạnh trên */
+    z-index: 2;       /* Nằm trên các hàng nội dung */
+    background-color: #f8f9fa;
+}
+
+/* Hàng dữ liệu cho mỗi học viên */
+
+/* Style chung cho các ô (cell) */
+.member-table-cell {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Ngăn các ô bị co lại */
+}
+
+/* Ô đầu tiên của header (trống) và ô thông tin học viên */
+.header-info-cell,
+.member-info-cell {
+    width: 250px; /* Chiều rộng cố định cho cột đầu tiên */
+    position: sticky; /* << DÍNH */
+    left: 0;          /* Dính vào cạnh trái */
+    z-index: 1;       /* Nằm trên các ô học phí */
+    background-color: #fff; /* Cần có nền để che nội dung bên dưới */
+}
+.header-info-cell {
+    background-color: #f8f9fa; /* Nền của header */
+    font-weight: 700;
+    color: #495057;
+}
+
+/* Ô thông tin học viên (cột 1) */
+.member-info-cell {
+    gap: 15px;
+    border-right: 1px solid #dee2e6; /* Đường kẻ phân cách */
+}
+.member-info-cell .member-name { font-weight: 700; }
+
+/* Ô học phí (các cột còn lại) */
+.header-tuition-cell,
+.tuition-cell {
+    width: 110px; /* Chiều rộng cố định cho mỗi cột học phí */
+    justify-content: center; /* Căn giữa checkbox */
+}
+.header-tuition-cell {
+    justify-content: center;
+    font-weight: 700;
+    color: #6c757d;
+}
+
+/* Style cho checkbox học phí (không đổi) */
+.tuition-cell input[type="checkbox"]:checked {
+    background-color: #0d6efd; /* Nền chuyển thành màu xanh dương */
+    border-color: #0d6efd;    /* Viền cũng chuyển thành màu xanh dương */
+}
+
+/* Tạo dấu tích màu trắng bằng pseudo-element */
+.tuition-cell input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 14px;
+    color: white; /* Dấu tích màu trắng */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+/* Style cho học viên đã nghỉ */
+.member-table-row.inactive-student .member-info-cell {
+    opacity: 0.6;
+    background-color: #f1f3f5;
+}
+
+.header-tuition-cell,
+.tuition-cell {
+    width: 110px;
+    justify-content: center;
+    /* Các thuộc tính chung của .member-table-cell đã có display:flex, ... */
+    
+    /* Thêm cursor: pointer cho ô tuition-cell */
+    cursor: pointer; 
+}
+
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.visible {
+    opacity: 1; visibility: visible;
+}
+.modal-content {
+    background: #fff; padding: 30px; border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%; max-width: 500px; position: relative;
+    transform: translateY(-50px); transition: transform 0.3s ease;
+}
+.modal-overlay.visible .modal-content {
+    transform: translateY(0);
+}
+.modal-content .close-btn { 
+    position: absolute; top: -5px; right: 0; font-size: 2rem; color: #aaa; background: none; border: none; cursor: pointer;
+ }
+.modal-content h2 { margin-top: 0; margin-bottom: 25px; text-align: center; }
+
+/* Style cho form bên trong modal */
+.modal-content .form-group { margin-bottom: 20px; }
+.modal-content label { display: block; margin-bottom: 8px; font-weight: 600; }
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+.modal-content textarea { resize: vertical; }
+.modal-content .btn-primary { width: 100%; padding: 12px 0; font-size: 1.1rem; }
+
+.schedule-list {
+    display: flex;
+    flex-direction: column; /* Xếp các ngày học theo chiều dọc */
+    gap: 4px; /* Khoảng cách nhỏ giữa các dòng */
+}
+.schedule-list .schedule-day {
+    font-size: 1rem; /* Kích thước nhỏ hơn một chút để vừa vặn */
+    font-weight: 600;
+}
+
+.abnormal-table-container {
+    padding-left: 0px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+}
+
+
+#detail-break-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+}
+
+/* --- CẬP NHẬT GRID (5 CỘT) --- */
+.abnormal-header, .abnormal-row {
+    display: grid;
+    /* 
+       Cột 1 (Ngày): 2 phần
+       Cột 2 (Giờ): 1.5 phần
+       Cột 3 (Độ dài): 1.2 phần
+       Cột 4 (HV): 0.6 phần
+       Cột 5 (Checkbox): 0.8 phần <--- MỚI
+    */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    padding: 12px 10px; /* Giảm padding một chút cho gọn */
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    gap: 5px; /* Khoảng cách giữa các cột */
+}
+
+
+
+/* --- CẬP NHẬT GRID (5 CỘT) --- */
+.offdates-header, .offdates-row {
+
+    display: grid;
+    /* Tỷ lệ: 1.5 - 1.2 - 1 - 0.6 - 3 */
+    grid-template-columns: 1fr 3fr; 
+    padding: 12px 10px;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    border-bottom: 1px solid #eee;
+    gap: 8px;
+    font-size: 0.9em;
+    text-align: left;
+
+}
+
+/* Header Sticky */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+    font-weight: bold;
+    color: #444;
+    font-size: 0.9em;
+    border-bottom: 2px solid #ddd;
+    text-align: left; /* Căn giữa tiêu đề header */
+}
+/* Riêng cột ngày và giờ thì căn trái cho đẹp */
+
+.sticky-header .col-count{
+    text-align: center;
+}
+
+
+.sticky-header .col-is-normal{
+    text-align: center;
+}
+/* Row Data */
+.abnormal-row {
+    font-size: 0.95em;
+    color: #333;
+}
+.abnormal-row:nth-child(even) { background-color: #fafafa; }
+.abnormal-row:hover { background-color: #e3f2fd; }
+
+
+/* Row Data */
+.offdates-row {
+    font-size: 0.95em;
+    color: #333;
+}
+.offdates-row:nth-child(even) { background-color: #fafafa; }
+.offdates-row:hover { background-color: #e3f2fd; }
+
+/* Căn giữa cho checkbox và số lượng */
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style cho Checkbox to ra một chút cho dễ nhìn */
+.normal-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2196F3; /* Màu xanh khi check */
+}
+
+
+
+.session-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* ĐỊNH NGHĨA GRID CHO BUỔI ĐÃ HỌC (5 CỘT) */
+/* Cấu trúc: Ngày - Giờ - Thời lượng - Số lượng - Danh sách tên (Rộng nhất) */
+.session-header, .session-row {
+    display: grid;
+    /* Tỷ lệ: 1.5 - 1.2 - 1 - 0.6 - 3 */
+    grid-template-columns: 1.5fr 1.2fr 1fr 0.6fr 3fr; 
+    padding: 12px 10px;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    border-bottom: 1px solid #eee;
+    gap: 8px;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+/* Header Sticky */
+.session-header {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+}
+/* Căn trái cho các cột text */
+.session-header .col-date,
+.session-header .col-names {
+    text-align: left;
+}
+.session-header .col-count{
+    text-align: center;
+}
+/* Row Data */
+.session-row:nth-child(even) { background-color: #fafafa; }
+.session-row:hover { background-color: #e3f2fd; }
+
+/* Style cho cột danh sách tên */
+.col-names {
+    color: #333;
+    font-size: 0.9em;
+    line-height: 1.4;
+    
+    /* Xử lý khi tên quá dài: Hiện tối đa 2 dòng rồi ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Số dòng tối đa muốn hiện */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Khi hover vào dòng thì hiện full tên (Optional) */
+.session-row:hover .col-names {
+    display: block;
+    overflow: visible;
+}
+
+/* Số lượng */
+.badge-count {
+    background: #109b2a;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+
+.badge-count-red{
+    background: #da1919;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+
+.notification-badge {
+    position: absolute; /* Để có thể di chuyển tự do so với thẻ cha */
+
+    /* Vị trí: Góc trên bên phải */
+    top: 50%;
+    right: 24px;
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+    transform: translate(50%, -50%); 
+    /* Vị trí: Góc trên bên phải */
+
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+
+    /* Tạo hình tròn và màu sắc */
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%; /* Làm tròn */
+
+    /* Kích thước và căn giữa số */
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+#noti-bat-thuong{
+    background-color: rgb(253, 213, 53);
+    color: #4a4a4a;
+}
+
+#noti-vang-tre{
+    background-color: rgb(58, 192, 60);
+}
+
+#noti-buoi-nghi{
+    background-color:   #fc5252;
+}
+
+.class-card .notification-badge{
+    position: absolute; /* Để có thể di chuyển tự do so với thẻ cha */
+
+    /* Vị trí: Góc trên bên phải */
+    top: 4px;
+    right: 4px;
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+    transform: translate(50%, -50%); 
+    /* Vị trí: Góc trên bên phải */
+
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+
+    /* Tạo hình tròn và màu sắc */
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%; /* Làm tròn */
+
+    /* Kích thước và căn giữa số */
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.detail-tabs .notification-badge {
+    position: absolute; /* Để có thể di chuyển tự do so với thẻ cha */
+
+    /* Vị trí: Góc trên bên phải */
+    top: 50%;
+    right: 8%;
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+    transform: translate(50%, -50%); 
+    /* Vị trí: Góc trên bên phải */
+
+    /* Dịch chuyển tâm của vòng tròn vào đúng điểm góc của thẻ cha */
+
+    /* Tạo hình tròn và màu sắc */
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%; /* Làm tròn */
+
+    /* Kích thước và căn giữa số */
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+
+}
+
+
+
+/* Class của nút (Mẫu 3 - Đã thu nhỏ size lại chút cho hợp với dòng text) */
+.btn-icon-only {
+    margin-bottom: 8px;
+    width: 32px;  /* Size nhỏ gọn hơn */
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background-color: #f0f0f0;
+    color: #333;
+    display: inline-flex; /* Quan trọng để icon nằm giữa nút */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    transition: all 0.1s ease;
+    flex-shrink: 0; /* Đảm bảo nút không bị bóp méo */
+}
+
+.btn-icon-only:hover {
+    background-color: #dcdcdc;
+}
+
+.btn-icon-only:active {
+    transform: scale(0.9); /* Thu nhỏ còn 90% kích thước gốc */
+    background-color: #c0c0c0; /* Màu nền tối hơn chút nữa */
+}
+
+.btn-check {
+    margin-bottom: 8px;
+    /* Hình dáng và kích thước */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Tròn */
+    border: 2px solid transparent; /* Viền trong suốt để tránh nhảy layout khi thêm viền */
+    
+    /* Màu sắc mặc định */
+    background-color: #f0f0f0;
+    color: #555; /* Màu icon xám */
+    
+    /* Căn giữa icon */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* Hiệu ứng chuyển màu mượt */
+}
+
+/* 1. Hiệu ứng Hover (Rê chuột vào) */
+.btn-check:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px); /* Nổi lên nhẹ */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 2. Hiệu ứng Active (Đang nhấn chuột xuống - Quan trọng theo yêu cầu của bạn) */
+.btn-check:active {
+    background-color: #28a745; /* Đổi sang màu XANH LÁ */
+    color: white; /* Icon đổi sang trắng */
+    border-color: #28a745;
+    transform: scale(0.95); /* Co lại tạo cảm giác nhấn */
+    box-shadow: none; /* Mất bóng đổ */
+}
+
+/* 3. Class hỗ trợ JS: Trạng thái "Đã chọn" (Giữ nguyên màu xanh sau khi thả chuột) */
+.btn-check.is-confirmed {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3); /* Hiệu ứng vòng sáng (Glow) */
+    pointer-events: none; /* (Tuỳ chọn) Không cho bấm lại nữa */
+}
+
+
+/* Nút Xóa (X) */
+.btn-remove-schedule {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background-color: #ffdddd;
+    color: #dc3545;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-remove-schedule:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Nút Thêm Mới (+) */
+.btn-add-schedule {
+    display: flex; /* Flex để căn giữa */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%; /* Full chiều rộng container */
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #e8f5e9;
+    color: #28a745;
+    border: 1px dashed #28a745;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-add-schedule:hover {
+    background-color: #d4edda;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Màu đen mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Hộp nội dung chính */
+.modal-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 380px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-title {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Các nhóm input */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Nhóm thời gian nằm ngang */
+.time-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.time-separator {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Nút bấm phía dưới */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-modal {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-cancel {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.btn-confirm {
+    background: #28a745;
+    color: white;
+}
+
+.btn-confirm:hover { background: #218838; }
+.btn-cancel:hover { background: #e2e2e2; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(1); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- CSS CHO MODAL CẢNH BÁO --- */
+.warning-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Nền tối hơn chút để tập trung */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Luôn nổi lên trên cùng */
+    animation: fadeIn 0.2s ease-out;
+}
+
+.warning-modal-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    font-family: 'Arial', sans-serif;
+    position: relative;
+}
+
+/* Icon cảnh báo màu vàng */
+.warning-icon-svg {
+    color: #f0ad4e;
+    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.warning-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.warning-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* Khu vực nút bấm */
+.warning-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Khoảng cách giữa 2 nút */
+}
+
+/* Nút tròn */
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+    font-size: 24px; /* Kích thước icon bên trong */
+}
+
+/* Nút Tick (Xanh) - Xác nhận rời đi */
+.btn-confirm-leave {
+    background: #28a745;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.4);
+}
+
+/* Nút X (Đỏ) - Ở lại */
+.btn-stay {
+    background: #dc3545;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4);
+}
+
+.btn-circle:hover {
+    transform: scale(1.1); /* Phóng to nhẹ khi rê chuột */
+}
+
+.btn-confirm-leave:hover { background: #218838; }
+.btn-stay:hover { background: #c82333; }

@@ -1,0 +1,147 @@
+<!-- FILE MỚI: pages/AddClass.html -->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Lớp Học Mới - RucaoChinese</title>
+    
+    <link rel="icon" type="image/png" href="../img/icon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Classadd.css"> 
+</head>
+<body>
+    <!-- Nút quay lại trang Quản lý lớp -->
+    <a href="../index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Quay lại</span>
+    </a>
+
+
+    <img src="../img/Logo.png" alt="RucaoChinese Logo" class="logo">
+
+    <!-- Form chính (khung màu tím) -->
+    <form id="add-class-form">
+        <div class="spinner"></div>
+
+        <div class="main-container">
+            <!-- CỘT BÊN TRÁI: FORM THÊM LỚP -->
+            <div class="form-panel left-panel">
+                <h2>Thêm lớp học mới</h2>
+
+                <div class="form-group">
+                    <label for="select-teacher">Chọn giáo viên để thêm lớp</label>
+                    <select id="select-teacher" name="teacherName">
+                        <option value="">-- Chọn giáo viên --</option>
+                        <!-- JS sẽ điền dữ liệu -->
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="class-name">Tên lớp</label>
+                        <input type="text" id="class-name" name="className" placeholder="Ví dụ: Lớp HSK3 Tháng 8" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label for="session-control">Tạo Gooogle Calendar</label>
+                        <input type="checkbox" id="session-control" name="sessionControl">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="teams-id">Teams Conversation ID</label>
+                        <input type="text" id="teams-id" name="teamsID" placeholder="Ví dụ: 19:meeting_Yz..." required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date">Ngày bắt đầu</label>
+                        <input type="date" id="start-date" name="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-type">Loại lớp</label>
+                        <select id="class-type" name="classType">
+                            <option value="Cơ bản">Cơ bản</option>
+                            <option value="HSK3">HSK3</option>
+                            <option value="HSK4">HSK4</option>
+                            <option value="Personal">Personal</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="schedule-section">
+                    <label>Lịch học trong tuần</label>
+                    <div id="schedule-container">
+                        <!-- Hàng lịch học đầu tiên -->
+                        <div class="schedule-row">
+                            <select name="dayOfWeek[]">
+                                <option value="Thứ 2">Thứ Hai</option>
+                                <option value="Thứ 3">Thứ Ba</option>
+                                <option value="Thứ 4">Thứ Tư</option>
+                                <option value="Thứ 5">Thứ Năm</option>
+                                <option value="Thứ 6">Thứ Sáu</option>
+                                <option value="Thứ 7">Thứ Bảy</option>
+                                <option value="Chủ Nhật">Chủ Nhật</option>
+                            </select>
+                            <input type="time" name="startTime[]" required>
+                            <span>-</span>
+                            <input type="time" name="endTime[]" required>
+                            <button type="button" class="remove-row-btn" style="visibility: hidden;">&times;</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-schedule-btn" class="add-row-btn">+</button>
+                </div>
+            </div>
+
+            <!-- CỘT BÊN PHẢI: BẢNG THÊM HỌC VIÊN -->
+            <div class="form-panel right-panel">
+                <h2>Thêm học viên vào lớp</h2>
+
+                <div class="add-student-form">
+                    <input type="text" id="new-student-name" placeholder="Nhập tên học viên mới...">
+                    <button type="button" id="add-student-btn" class="btn-primary">+</button>
+                </div>
+
+                <div class="student-list-container">
+                    <table id="student-table">
+                        <thead>
+                            <tr>
+                                <th>Tên học viên</th>
+                                <th>K1</th>
+                                <th>K2</th>
+                                <th>K3</th>
+                                <th></th> <!-- Cột cho nút xóa -->
+                            </tr>
+                        </thead>
+                        <tbody id="student-table-body">
+                            <!-- JS sẽ điền các hàng học viên vào đây -->
+                            <!-- Ví dụ một hàng -->
+                            <tr>
+                                <td>Nguyễn Văn An</td>
+                                <td><input type="checkbox" class="tuition-cb"></td>
+                                <td><input type="checkbox" class="tuition-cb"></td>
+                                <td><input type="checkbox" class="tuition-cb"></td>
+                                <td><button class="remove-student-btn">&times;</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="footer-actions">
+            <button type="submit" class="btn-primary submit-btn">Thêm Lớp</button>
+        </div>
+    </form>
+    <!-- Script tạm thời để xử lý việc thêm/xóa hàng -->
+    <script src="../script/Class_add.js">
+        
+    </script>
+
+</body>
+</html>

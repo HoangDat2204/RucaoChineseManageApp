@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tự Động Tạo Ảnh Tổng Kết Khóa Học</title>
+    
+    
+    <link rel="icon" type="image/png" href="../img/icon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_bill_cal.css">
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Trang Chủ</span>
+    </a>
+
+
+
+    <img src="../img/Logo.png" alt="RucaoChinese Logo" class="logo">
+    
+    
+    <div class="container">
+        <!-- Spinner cho hiệu ứng loading -->
+        <div class="spinner"></div>
+    
+        <!-- Tiêu đề và nút làm mới -->
+        <div class="header-actions">
+            <h1>Ứng dụng tính buổi học RucaoChinese</h1>
+        </div>
+    
+        <!-- KHU VỰC CHỨC NĂNG MỚI (DẠNG LƯỚI 2 CỘT) -->
+        <div class="action-grid">
+
+            <!-- Card 1: Tải/Kéo-thả file (giữ nguyên) -->
+            <div id="upload-card" class="action-card">
+                <input type="file" id="json-input" class="input-file" accept=".json">
+                <label for="json-input" id="drop-zone" class="drop-area">
+                    <div class="action-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </div>
+                    <h3>Xử lý file JSON</h3>
+                    <p id="file-name-display">Kéo thả hoặc chọn file để xử lý</p>
+                </label>
+            </div>
+        
+            <!-- Card 2: Tìm kiếm (cấu trúc lại) -->
+            <div id="search-card" class="action-card">
+                
+                <!-- Trạng thái thu gọn (hiển thị mặc định) -->
+                <div class="card-summary">
+                    <div class="action-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+                    <h3>Tìm kiếm học viên</h3>
+                    <p>Tìm ngày học theo tên, khóa và giáo viên</p>
+                </div>
+        
+                <!-- Trạng thái mở rộng (ẩn mặc định) -->
+                <div class="card-detail">
+                    <button id="close-search-btn" class="close-btn">&times;</button>
+                    <h2>Tìm ngày học</h2>
+
+                    <!-- Placeholder cho chọn giáo viên -->
+                    <div class="form-group">
+                        <select id="find-teacher">
+                            <option value="">--- Chọn giáo viên ---</option>
+                        </select>
+                    </div>
+                    <div class="form-row-main form-row ">
+                        <div class="form-group">
+                            <select id="find-student">
+                                <option value="">--- Chọn học viên ---</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="find-course">
+                                <option value="">--- Chọn khóa học ---</option>
+                            </select>
+                        </div>
+                        <button id="find-dates-btn" class="btn btn-icon search-btn" title="Tìm kiếm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    
+        <!-- KHU VỰC KẾT QUẢ VÀ HÀNH ĐỘNG -->
+        <div class="results-section">
+        <div id="student-selector-div" style="display: none;">
+            <label for="student-select">Các học viên đang chờ kết Bill</label>
+            <select id="student-select"></select>
+        </div>
+
+        
+        <div id="action-buttons-group" class="button-group" style="display: none;">
+            <button id="generate-btn" class="btn btn-primary">Tải Ảnh</button>
+            
+            <!-- Nút Copy -->
+            <button id="copy-btn" class="btn btn-icon" title="Copy ảnh vào clipboard">
+                <!-- Icon Copy -->
+                <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <!-- Icon Dấu Tích -->
+                <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+
+            <!-- NÚT MỚI: Hủy Tác Vụ -->
+            <button id="cancel-bill-btn" class="btn btn-icon btn-danger" title="Xóa Bill trên Google Calendar">
+                <!-- Icon Dấu X -->
+                <svg class="icon-default" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <!-- Icon Dấu Tích -->
+                <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            
+            <!-- NÚT MỚI: Làm Mới Dữ Liệu -->
+            <button id="refresh-btn" class="btn btn-icon" title="Làm mới dữ liệu từ Google Calendar">
+                <!-- Icon Refresh -->
+                <svg class="icon-default" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                <!-- Icon Dấu Tích -->
+                <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="canvas-container">
+        <canvas id="certificateCanvas"></canvas>
+    </div>
+    
+    <!-- File chứa chuỗi Data URL của ảnh mẫu -->
+    <script src="../script/imageDataBill.js"></script>
+    <script src = "../script/Logic_bill_cal.js"></script>
+</body>
+
+
+</html>

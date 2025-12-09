@@ -1,0 +1,265 @@
+
+@font-face {
+    /* 1. Đặt một cái tên để bạn sẽ gọi sau này */
+    font-family: 'Cocomat'; 
+
+    /* 2. Cung cấp đường dẫn đến file font */
+    /* './' có nghĩa là bắt đầu từ thư mục hiện tại của file CSS */
+    src: url('../font/CocomatLight-ZXY3.ttf') format('woff2'); 
+    /* Nếu file CSS nằm cùng cấp với thư mục fonts, dùng: url('./fonts/...') */
+
+    /* 3. (Tùy chọn nhưng rất nên có) Chỉ định các thuộc tính cho font này */
+    font-weight: normal; /* Hoặc 400 */
+    font-style: normal;
+    font-display: swap; /* Giúp hiển thị nhanh hơn */
+}
+
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url('../img/Cover.png');    
+
+    /* 2. Thuộc tính để ảnh nền đẹp hơn */
+    background-size: cover;          /* Phóng to/thu nhỏ ảnh để lấp đầy màn hình */
+    background-position: center;     /* Căn giữa ảnh nền */
+    background-repeat: no-repeat;    /* Không lặp lại ảnh */
+    background-attachment: fixed;    /* Cố định ảnh nền khi cuộn trang */
+
+    
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    color: #212529;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: block; /* Bắt buộc để căn giữa bằng margin */
+    height: 200px;  /* Chiều cao của logo, bạn có thể thay đổi */
+    width: auto;    /* Tự động tính toán chiều rộng để giữ đúng tỷ lệ */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Nút quay lại trang chủ (tái sử dụng) */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.back-button svg {
+    margin-right: 8px;
+}
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Cột trái rộng hơn một chút */
+    gap: 30px;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Panel chung */
+.form-panel {
+background: #ffffff;
+border-radius: 24px;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+padding: 30px 35px;
+}
+.form-panel h2 {
+text-align: center;
+font-size: 1.5rem;
+font-weight: 800;
+margin-top: 0;
+margin-bottom: 10px;
+}
+
+/* Các trường input/select */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.9rem; color: #495057; }
+.form-panel input[type="text"], .form-panel input[type="date"], .form-panel input[type="time"], .form-panel select {
+width: 100%; padding: 12px 15px; border: 1px solid #dee2e6;
+border-radius: 8px; font-size: 1rem; font-family: inherit; box-sizing: border-box; background-color: #fff;
+}
+
+/* Bố cục hàng ngang */
+.form-row { display: flex; gap: 20px; align-items: flex-end; }
+.form-row .form-group { flex: 1; }
+.form-row .form-group.full-width { flex-grow: 3; }
+.checkbox-group { text-align: center; padding-bottom: 10px; }
+.checkbox-group input { width: 22px; height: 22px; }
+
+/* Lịch học */
+.schedule-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.schedule-row select { flex: 2; }
+.schedule-row input { flex: 1.5; }
+.remove-row-btn { background: none; border: none; font-size: 1.5rem; color: #dc3545; cursor: pointer; }
+.add-row-btn {
+display: block; width: 36px; height: 36px; border-radius: 50%;
+background-color: #e9ecef; border: 1px solid #dee2e6;
+font-size: 1.8rem; color: #495057; cursor: pointer; margin: 15px auto 0 auto;
+line-height: 32px; transition: all 0.2s;
+}
+.add-row-btn:hover { background-color: #0d6efd; color: #fff; }
+
+
+/* --- CỘT BÊN PHẢI --- */
+.right-panel {
+    flex:1;
+    display: flex;
+    flex-direction: column; }
+
+.add-student-form {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+}
+.add-student-form input {
+flex-grow: 1;
+}
+.add-student-form .btn-primary {
+flex-shrink: 0;
+width: 48px;
+height: 48px;
+padding: 0; font-size: 1.5rem; border-radius: 8px;
+}
+
+.student-list-container {
+flex-grow: 1; /* Chiếm hết không gian còn lại */
+overflow-y: auto; /* Có thanh cuộn nếu danh sách dài */
+}
+
+#student-table {
+width: 100%;
+border-collapse: collapse;
+}
+#student-table th, #student-table td {
+padding: 12px 8px;
+text-align: center;
+border-bottom: 1px solid #f1f3f5;
+}
+#student-table th {
+font-size: 0.85rem;
+color: #6c757d;
+font-weight: 600;
+}
+#student-table td:first-child {
+text-align: left;
+font-weight: 700;
+}
+.tuition-cb { width: 20px; height: 20px; }
+.remove-student-btn { background: none; border: none; color: #dc3545; cursor: pointer; font-size: 1.2rem; }
+
+/* Nút Submit chính ở dưới */
+.footer-actions {
+max-width: 1200px;
+margin: 10px auto 0 auto;
+}
+.submit-btn {
+width: 100%; padding: 15px; font-size: 1.1rem; font-weight: 700;
+background-color: #0d6efd; color: white; border: none;
+border-radius: 12px; cursor: pointer; transition: background-color 0.2s;
+}
+.submit-btn:hover { background-color: #0b5ed7; }
+
+.footer-actions {
+    max-width: 1200px; /* Cùng max-width với .main-container */
+    margin: 30px auto 0 auto; /* Tạo khoảng cách trên và căn giữa */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.submit-btn:hover {
+    background-color: #0b5ed7;
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+    transform: translateY(-2px);
+}
+
+.page-container {
+    position: relative;
+    width: 100%;
+    transition: filter 0.3s ease-in-out;
+}
+.add-class-form {
+    /* Thêm position để lớp phủ có thể định vị bên trong nó */
+    position: relative;
+    transition: filter 0.3s ease-in-out;
+
+}
+
+/* Lớp phủ mờ */
+.add-class-form ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px; /* Khớp với bo góc của container */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    z-index: 10;
+}
+
+/* Spinner (Icon xoay) */
+.add-class-form .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; /* Màu nền vòng xoay */
+    border-top: 5px solid #3498db; /* Màu chính vòng xoay */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Trạng thái khi container đang được làm mới */
+.add-class-form.loading {
+    filter: blur(2px); /* Làm mờ nội dung bên dưới */
+    pointer-events: none; /* Vô hiệu hóa tương tác */
+}
+
+.add-class-form.loading::after,
+.add-class-form.loading .spinner {
+    opacity: 1;
+    visibility: visible;
+}

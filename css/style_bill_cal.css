@@ -1,0 +1,683 @@
+@font-face {
+    /* 1. Đặt một cái tên để bạn sẽ gọi sau này */
+    font-family: 'Cocomat'; 
+
+    /* 2. Cung cấp đường dẫn đến file font */
+    /* './' có nghĩa là bắt đầu từ thư mục hiện tại của file CSS */
+    src: url('../font/CocomatLight-ZXY3.ttf') format('woff2'); 
+    /* Nếu file CSS nằm cùng cấp với thư mục fonts, dùng: url('./fonts/...') */
+
+    /* 3. (Tùy chọn nhưng rất nên có) Chỉ định các thuộc tính cho font này */
+    font-weight: normal; /* Hoặc 400 */
+    font-style: normal;
+    font-display: swap; /* Giúp hiển thị nhanh hơn */
+}
+body {
+    /* 1. Đặt ảnh nền */
+    /* Thay 'images/background.jpg' bằng đường dẫn chính xác đến ảnh của bạn */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.6)), url('../img/Cover.png');
+
+    /* 2. Thuộc tính để ảnh nền đẹp hơn */
+    background-size: cover;          /* Phóng to/thu nhỏ ảnh để lấp đầy màn hình */
+    background-position: center;     /* Căn giữa ảnh nền */
+    background-repeat: no-repeat;    /* Không lặp lại ảnh */
+    background-attachment: fixed;    /* Cố định ảnh nền khi cuộn trang */
+
+    /* Các thuộc tính cũ của body */
+    font-family: 'Nunito', sans-serif; /* Dùng Nunito làm font chính cho trang */
+    padding: 20px;
+    line-height: 1.6;
+    margin: 0; /* Đảm bảo không có khoảng trắng thừa quanh trang */
+}
+.input-file {
+    /* Ẩn input thật đi */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.btn-file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #495057;
+    background-color: #e9ecef;
+    transition: all 0.2s ease-in-out;
+    padding: 20px; /* Tăng padding để vùng kéo-thả lớn hơn */
+}
+
+/* Style khi người dùng kéo file VÀO nút này */
+.btn-file.drag-over {
+    background-color: #f0f8ff; /* Đổi màu nền */
+    transform: scale(1.02); /* Phóng to nhẹ để tạo hiệu ứng */
+    color: #007bff; /* Đổi màu chữ */
+}
+/* Thêm một chút style cho container để nó nổi bật trên nền */
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Nền trắng hơi trong suốt */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+    max-width: 600px;
+    margin: 40px auto; /* Tăng khoảng cách trên dưới */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+.logo {
+    display: block; /* Bắt buộc để căn giữa bằng margin */
+    height: 200px;  /* Chiều cao của logo, bạn có thể thay đổi */
+    width: auto;    /* Tự động tính toán chiều rộng để giữ đúng tỷ lệ */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px; /* Khoảng cách giữa logo và container bên dưới */
+}
+
+/* Sửa lại .container để đẩy nó xuống và xóa margin-top cũ */
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    /* Sửa dòng margin này */
+    margin: 0 auto 40px auto; /* Xóa margin-top, giữ lại căn giữa và margin-bottom */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    /* Có thể giảm margin-top của H1 đi nếu cần */
+    margin-top: 0; 
+}
+#canvas-container { display: none; }
+
+/* --- PHẦN LÀM ĐẸP NÚT BẤM --- */
+
+/* 1. Style cơ bản cho tất cả các nút */
+.btn {
+    display: inline-block;
+    font-weight: 700; /* In đậm */
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none; /* Không cho chọn chữ trên nút */
+    background-color: transparent;
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.2), 0 3px 6px rgba(0, 0, 0, 0.08);
+    padding: 12px 0px;
+    font-size: 16px;
+    border-radius: 8px;
+    /* Hiệu ứng chuyển động mượt mà */
+    transition: all 0.2s ease-in-out;
+}
+
+/* 2. Style cho nút chính (Tạo Bill) */
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Hiệu ứng khi di chuột vào */
+.btn-primary:not(:disabled):hover {
+    transform: translateY(-2px); /* Nâng nút lên một chút */
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Hiệu ứng khi bấm vào (Bound/Nảy) */
+.btn-primary:not(:disabled):active {
+    transform: translateY(1px); /* Ấn nút xuống */
+    box-shadow: none; /* Bỏ bóng đổ */
+}
+
+/* Style khi nút bị vô hiệu hóa */
+.btn-primary:disabled {
+    background-color: #cccccc;
+    border-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+/* 3. Style cho nút tải file tùy chỉnh */
+.file-input-wrapper {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-file {
+    /* Ẩn hoàn toàn input thật một cách an toàn */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.btn-file {
+    display: flex; /* Dùng flexbox để căn chỉnh icon và chữ */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.btn-file .icon-upload {
+    margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+    font-size: 20px;
+}
+
+.btn-file:hover {
+    background-color: #dde1e5;
+    border-color: #b7bdc3;
+}
+
+/* --- KẾT THÚC PHẦN LÀM ĐẸP --- */
+.container { max-width: 600px; margin: auto;  }
+input, select, button { font-size: 16px; padding: 8px; margin-top: 5px; margin-bottom: 5px; width: 100%; box-sizing: border-box; }
+button { background-color: #007bff; color: white; border: none; cursor: pointer; transition: background-color 0.2s; }
+button:hover { background-color: #0056b3; }
+button:disabled { background-color: #cccccc; cursor: not-allowed; }
+#canvas-container { display: none; }
+
+#student-select option:disabled {
+    color: #999; /* Màu chữ xám nhạt */
+    background-color: #f0f0f0; /* Tùy chọn: màu nền hơi khác một chút */
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.back-button svg {
+    margin-right: 8px;
+}
+
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.button-group .btn-primary {
+    flex-grow: 1;
+}
+
+/* Style chung cho TẤT CẢ các nút icon */
+.button-group .btn-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.button-group .btn-icon:hover {
+    background-color: #dde1e5;
+    border-color: #b7bdc3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.button-group .btn-icon:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Style riêng cho nút HỦY (màu đỏ) */
+.button-group .btn-icon.btn-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+.button-group .btn-icon.btn-danger:hover {
+    background-color: #f1b0b7;
+    border-color: #eea2aa;
+}
+
+/* Style chung cho các icon bên trong nút */
+.button-group .btn-icon svg {
+    position: absolute;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.button-group .btn-icon .icon-default,
+.button-group .btn-icon .icon-copy {
+    transform: translateY(0);
+}
+.button-group .btn-icon .icon-check {
+    transform: translateY(120%);
+    stroke: #ffffff;
+}
+
+/* --- Style khi THÀNH CÔNG (class .success) --- */
+.button-group .btn-icon.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+/* Di chuyển icon mặc định/copy lên trên */
+.button-group .btn-icon.success .icon-default,
+.button-group .btn-icon.success .icon-copy {
+    transform: translateY(-180%);
+}
+/* Kéo icon dấu tích vào giữa */
+.button-group .btn-icon.success .icon-check {
+    transform: translateY(0);
+}
+
+/* Thêm hiệu ứng xoay khi đang tải (cho nút refresh) */
+.button-group .btn-icon.loading svg.icon-default {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.container {
+    /* Thêm position để lớp phủ có thể định vị bên trong nó */
+    position: relative;
+    transition: filter 0.3s ease-in-out;
+
+}
+
+/* Lớp phủ mờ */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px; /* Khớp với bo góc của container */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    z-index: 10;
+}
+
+/* Spinner (Icon xoay) */
+.container .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; /* Màu nền vòng xoay */
+    border-top: 5px solid #3498db; /* Màu chính vòng xoay */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Trạng thái khi container đang được làm mới */
+.container.refreshing {
+    filter: blur(2px); /* Làm mờ nội dung bên dưới */
+    pointer-events: none; /* Vô hiệu hóa tương tác */
+}
+
+.container.refreshing::after,
+.container.refreshing .spinner {
+    opacity: 1;
+    visibility: visible;
+}
+
+#student-select option.processed {
+    color: #999;
+    /* Thêm hiệu ứng gạch ngang để nhấn mạnh */
+    text-decoration: line-through; 
+    font-style: italic;
+}
+
+/* Ghi đè lại màu nền khi được chọn để dễ nhìn hơn */
+#student-select option.processed:checked {
+    background: #e0e0e0;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+}
+
+
+/* Style chung cho mỗi card */
+.action-card {
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    padding: 30px 20px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card .card-summary,
+.action-card .card-detail {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+/* Tách biệt input và label cho card tải file */
+.action-card .input-file {
+    width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1;
+}
+.action-card .drop-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.action-card .action-icon {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.action-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.action-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+/* Style cho card bị vô hiệu hóa */
+.action-card.disabled {
+    background-color: #f8f9fa;
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.action-card.disabled .action-icon {
+    color: #adb5bd;
+}
+
+/* Hiệu ứng khi kéo file vào card tải lên */
+.action-card .drop-area.drag-over {
+    background-color: #e3f2fd;
+    /* Có thể thêm hiệu ứng viền */
+    outline: 2px dashed #007bff;
+    outline-offset: -10px;
+}
+
+
+/* Khu vực kết quả (dropdown và các nút) */
+.results-section {
+    border-top: 1px solid #e9ecef;
+    padding-top: 30px;
+}
+
+.action-card .card-detail {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 0px; /* Tạm thời comment dòng này */
+    opacity: 0;
+    pointer-events: none;
+    display: block; /* << THAY ĐỔI TỪ flex THÀNH block */
+    flex-direction: column; /* Dòng này không còn tác dụng nhưng cứ để đó */
+    text-align: left;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    height: fit-content; 
+}
+
+.action-card .card-detail h2 {
+    margin-top: 10px; text-align: center;
+    margin-bottom: 10px;
+}
+.action-card .card-detail .close-btn {
+    position: absolute; top: -5px; right: 0; font-size: 2rem; color: #aaa; background: none; border: none; cursor: pointer;
+}
+/* Style cho form bên trong (tái sử dụng) */
+.action-card .card-detail .form-group { margin-bottom: 5px; }
+.action-card .card-detail label { display: block; margin-bottom: 5px; font-weight: bold; }
+.action-card .card-detail input,
+.action-card .card-detail select { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+.action-card .card-detail .btn-primary { margin-top: auto; }
+
+
+/* --- LOGIC HIỆU ỨNG KHI CONTAINER CÓ CLASS .search-active --- */
+
+.container.search-active .action-grid {
+    grid-template-columns: 0fr 1fr; /* Co card bên trái lại thành 0 */
+    height: 214.2px;
+    gap: 0;
+}
+
+/* Làm mờ và ẩn card tải file */
+.container.search-active #upload-card {
+    opacity: 0;
+    transform: scale(0.95);
+    padding: 0;
+    pointer-events: none;
+}
+
+/* Mở rộng card tìm kiếm */
+.container.search-active #search-card {
+    cursor: default;
+}
+
+/* Ẩn nội dung tóm tắt của card tìm kiếm */
+.container.search-active #search-card .card-summary {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+}
+/* #search-card.action-card{
+
+
+
+} */
+
+/* Hiện nội dung chi tiết (form) của card tìm kiếm */
+.container.search-active #search-card .card-detail {
+    opacity: 1;
+    pointer-events: all;
+    transition-delay: 0.2s; /* Hiện ra sau một chút cho đẹp */
+}
+
+.action-card .card-detail .close-btn {
+    position: absolute;
+    top: 5px;      /* Khoảng cách từ cạnh trên */
+    left: 5px;     /* Khoảng cách từ cạnh trái */
+    
+    /* Bỏ đi các thuộc tính căn giữa */
+    /* transform: translateX(-50%); */
+
+    /* Style cơ bản cho nút */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f1f3f5;
+    border: none;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    color: #868e96;
+    cursor: pointer;
+    line-height: 1; /* Căn dấu X vào giữa nút */
+    transition: all 0.2s ease;
+}
+
+.action-card .card-detail .close-btn:hover {
+    background-color: #e9ecef;
+    color: #495057;
+    transform: scale(1.1); /* Hiệu ứng phóng to nhẹ */
+}
+.card-detail .form-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end; /* Căn tất cả các item theo cạnh dưới */
+}
+
+/* Các group input/select trong hàng sẽ tự động chia sẻ không gian */
+.card-detail .form-row .form-group {
+    flex: 1; /* Quan trọng: làm cho 2 dropdown rộng bằng nhau */
+    margin-bottom: 0;
+}
+
+/* Nút tìm kiếm sẽ có kích thước cố định */
+
+
+/* Style cho các .form-group đứng một mình (như dropdown giáo viên) */
+.card-detail .form-group {
+    margin-bottom: 5px; /* Giữ lại khoảng cách dưới */
+}
+
+
+
+.card-detail .search-btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* STYLE MỚI: Áp dụng style của nút icon trung tính */
+    background-color: #e9ecef; /* Màu nền xám nhạt */
+    color: #495057;         /* Màu icon xám đậm */
+    border: 1px solid #ced4da; /* Viền nhẹ */
+    box-shadow: none;        /* Bỏ đổ bóng mặc định */
+    transition: all 0.2s ease;
+}
+
+.card-detail .search-btn:hover {
+    background-color: #007bff; /* Khi hover chuyển sang màu xanh chính */
+    color: white;
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-detail .search-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+/* Responsive */
+@media (max-width: 600px) {
+    .action-grid {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+    }
+}
+
+
+/* Lớp phủ mờ (Overlay) - Chìa khóa để căn giữa */
+.warning-modal-overlay {
+    position: fixed; /* Cố định so với màn hình trình duyệt */
+    top: 0; 
+    left: 0;
+    width: 100vw; /* Full chiều rộng viewport */
+    height: 100vh; /* Full chiều cao viewport */
+    background: rgba(0, 0, 0, 0.6); /* Nền đen mờ */
+    
+    /* Flexbox để căn giữa cái hộp con */
+    display: flex;
+    justify-content: center; /* Căn giữa ngang */
+    align-items: center; /* Căn giữa dọc */
+    
+    z-index: 99999; /* Đảm bảo nó nằm trên tất cả mọi thứ */
+    opacity: 0; /* Bắt đầu tàng hình để animation */
+    animation: modalFadeIn 0.3s forwards; /* Animation hiện ra */
+}
+
+/* Hộp nội dung (Box) */
+.warning-modal-box {
+    position: relative; /* Để nội dung con căn theo nó */
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px; /* Độ rộng cố định */
+    max-width: 90%; /* Không quá to trên mobile */
+    text-align: center;
+    
+    /* Đổ bóng để tạo chiều sâu */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    
+    /* Animation nảy lên */
+    transform: scale(0.8);
+    animation: modalPopUp 0.3s forwards;
+}
+
+/* --- ANIMATION --- */
+@keyframes modalFadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes modalPopUp {
+    to { transform: scale(1); }
+}
+
+/* --- CÁC THÀNH PHẦN BÊN TRONG (Giữ nguyên như cũ) --- */
+.warning-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; color: #333; }
+.warning-text { font-size: 15px; color: #666; margin-bottom: 25px; line-height: 1.5; }
+.warning-actions { display: flex; justify-content: center; gap: 20px; }
+.btn-circle { width: 45px; height: 45px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; transition: 0.2s; }
+.btn-circle:hover { transform: scale(1.1); }
+.btn-delete-confirm { background: #dc3545; }
+.btn-cancel-gray { background: #e9ecef; color: #555; }
+.delete-icon-svg { width: 50px; height: 50px; color: #dc3545; margin-bottom: 15px; }
