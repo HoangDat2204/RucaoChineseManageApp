@@ -1593,6 +1593,23 @@ input:checked + .slider:before { transform: translateX(26px); }
 .btn-confirm-leave:hover { background: #218838; }
 .btn-stay:hover { background: #c82333; }
 
+
+
+
+
+
+
+
+
+.empty-message{
+    border: none;
+}
+.student-list-container {
+    flex-grow: 1; /* Chiếm hết không gian còn lại */
+    overflow-y: auto; /* Có thanh cuộn nếu danh sách dài */
+    }
+
+
 .btn-circle-text {
     width: 20px;
     height: 20px;
@@ -1612,6 +1629,60 @@ input:checked + .slider:before { transform: translateX(26px); }
     /* Đẩy dấu cộng lên một chút (vì font chữ thường bị lệch xuống dưới) */
     transition: 0.2s;
     margin-left: 10px;
+    position: relative; /* Để căn chỉnh 2 thanh bên trong */
+
+}
+
+
+/* Thanh dọc */
+.btn-circle-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px; /* Độ dày nét */
+    height: 10px; /* Chiều dài nét dọc */
+    background-color: white; /* Màu dấu cộng */
+}
+
+/* Thanh ngang */
+.btn-circle-text::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px; /* Chiều dài nét ngang */
+    height: 2px; /* Độ dày nét (bằng nét dọc) */
+    background-color: white; /* Màu dấu cộng */
+}
+
+
+
+
+/* Thanh dọc */
+.btn-circle-text#huge_one::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px; /* Độ dày nét */
+    height: 20px; /* Chiều dài nét dọc */
+    background-color: white; /* Màu dấu cộng */
+}
+
+/* Thanh ngang */
+.btn-circle-text#huge_one::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px; /* Chiều dài nét ngang */
+    height: 4px; /* Độ dày nét (bằng nét dọc) */
+    background-color: white; /* Màu dấu cộng */
 }
 
 .btn-circle-text:hover {
@@ -1620,24 +1691,15 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 
 
-
-.btn-circle-text#huge_one{
-    font-size: 30px;
-    margin-top: 30px;
-    width: 50px;
-    height: 50px;
-}
-
-
 .btn-circle-text:active {
     transform: scale(0.9); /* Thu nhỏ còn 90% kích thước gốc */
     background-color: #1c632c; /* Màu nền tối hơn chút nữa */
 }
 
-.empty-message{
-    border: none;
+
+.btn-circle-text#huge_one{
+    margin-top: 30px;
+    width: 50px;
+    height: 50px;
 }
-.student-list-container {
-    flex-grow: 1; /* Chiếm hết không gian còn lại */
-    overflow-y: auto; /* Có thanh cuộn nếu danh sách dài */
-    }
+

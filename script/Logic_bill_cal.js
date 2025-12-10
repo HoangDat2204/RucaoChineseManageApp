@@ -271,21 +271,42 @@ function populateSelect(selectElement, dataArray, defaultText) {
 
 
 async function copyCanvasToClipboard(canvasElement) {
+    // Kiểm tra hỗ trợ
     if (!navigator.clipboard || !navigator.clipboard.write) {
-        alert("Tính năng copy ảnh không được trình duyệt của bạn hỗ trợ. Vui lòng dùng trình duyệt mới hơn.");
+        alert("Trình duyệt không hỗ trợ copy.");
         downloadCanvasAsImage_fallback(canvasElement, "bill_fallback.png");
         return;
     }
+
     try {
-        const blob = await new Promise(resolve => canvasElement.toBlob(resolve, 'image/png'));
-        const item = new ClipboardItem({ 'image/png': blob });
-        await navigator.clipboard.write([item]);
+        // --- ĐOẠN SỬA ĐỔI QUAN TRỌNG ---
+        // Thay vì await blob bên ngoài, ta ném Promise thẳng vào trong ClipboardItem.
+        // Đây là cách Safari/WebKit trên Mac yêu cầu.
+        const clipboardItemInput = new ClipboardItem({
+            'image/png': new Promise(async (resolve) => {
+                canvasElement.toBlob((blob) => {
+                    resolve(blob);
+                }, 'image/png');
+            })
+        });
+        // --------------------------------
+
+        await navigator.clipboard.write([clipboardItemInput]);
         
-        copyBtn.classList.add('copied');
-        setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+        // Hiệu ứng thành công
+        if (typeof copyBtn !== 'undefined') { // Kiểm tra lỡ biến copyBtn chưa khai báo
+            copyBtn.classList.add('copied');
+            setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+        }
+        console.log("Đã copy ảnh thành công!");
+
     } catch (error) {
-        console.error("Lỗi khi copy ảnh vào clipboard:", error);
-        alert("Không thể copy ảnh. Ảnh sẽ được tải về thay thế.");
+        // IN LỖI RA ĐỂ DEBUG
+        console.error("CHI TIẾT LỖI TRÊN MAC:", error); 
+        console.error("Tên lỗi:", error.name);
+        console.error("Thông điệp:", error.message);
+
+        alert("Không thể copy ảnh (Lỗi: " + error.name + "). Đang tải về...");
         downloadCanvasAsImage_fallback(canvasElement, "bill_error.png");
     }
 }

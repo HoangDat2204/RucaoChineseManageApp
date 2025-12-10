@@ -1,156 +1,4 @@
 {
-  "Quyên Nguyễn": {
-    "teacher": "Như Thảo",
-    "class": [
-      {
-        "result": "13 tháng 10, 2025, Không có thời gian, B1K3",
-        "date": "13 tháng 10, 2025"
-      },
-      {
-        "result": "20 tháng 10, 2025, Không có thời gian, B2K3",
-        "date": "20 tháng 10, 2025"
-      },
-      {
-        "result": "22 tháng 10, 2025, Không có thời gian, B3K3",
-        "date": "22 tháng 10, 2025"
-      },
-      {
-        "result": "27 tháng 10, 2025, Không có thời gian, B4K3",
-        "date": "27 tháng 10, 2025"
-      },
-      {
-        "result": "29 tháng 10, 2025, Không có thời gian, B5K3",
-        "date": "29 tháng 10, 2025"
-      },
-      {
-        "result": "12 tháng 11, 2025, Không có thời gian, B6K3",
-        "date": "12 tháng 11, 2025"
-      },
-      {
-        "result": "18 tháng 11, 2025, Không có thời gian, B7K3",
-        "date": "18 tháng 11, 2025"
-      },
-      {
-        "result": "8 tháng 12, 2025, Không có thời gian, B8K3",
-        "date": "8 tháng 12, 2025"
-      }
-    ]
-  },
-  "Rucao_CT_Phi Yến": {
-    "teacher": "Cát Tường",
-    "class": [
-      {
-        "result": "11 tháng 11, 2025, Không có thời gian, B1K1",
-        "date": "11 tháng 11, 2025"
-      },
-      {
-        "result": "13 tháng 11, 2025, Không có thời gian, B2K1",
-        "date": "13 tháng 11, 2025"
-      },
-      {
-        "result": "18 tháng 11, 2025, Không có thời gian, B3K1",
-        "date": "18 tháng 11, 2025"
-      },
-      {
-        "result": "20 tháng 11, 2025, Không có thời gian, B4K1",
-        "date": "20 tháng 11, 2025"
-      },
-      {
-        "result": "27 tháng 11, 2025, Không có thời gian, B5K1",
-        "date": "27 tháng 11, 2025"
-      },
-      {
-        "result": "2 tháng 12, 2025, Không có thời gian, B6K1",
-        "date": "2 tháng 12, 2025"
-      },
-      {
-        "result": "4 tháng 12, 2025, Không có thời gian, B7K1",
-        "date": "4 tháng 12, 2025"
-      },
-      {
-        "result": "9 tháng 12, 2025, Không có thời gian, B8K1",
-        "date": "9 tháng 12, 2025"
-      }
-    ]
-  },
-  "Rucao_KL_Cơ bản tháng 11": {
-    "teacher": "Khánh Ly",
-    "class": [
-      {
-        "result": "15 tháng 11, 2025, Không có thời gian, B1K1",
-        "date": "15 tháng 11, 2025"
-      },
-      {
-        "result": "18 tháng 11, 2025, Không có thời gian, B2K1",
-        "date": "18 tháng 11, 2025"
-      },
-      {
-        "result": "22 tháng 11, 2025, Không có thời gian, B3K1",
-        "date": "22 tháng 11, 2025"
-      },
-      {
-        "result": "25 tháng 11, 2025, Không có thời gian, B4K1",
-        "date": "25 tháng 11, 2025"
-      },
-      {
-        "result": "29 tháng 11, 2025, Không có thời gian, B5K1",
-        "date": "29 tháng 11, 2025"
-      },
-      {
-        "result": "2 tháng 12, 2025, Không có thời gian, B6K1",
-        "date": "2 tháng 12, 2025"
-      },
-      {
-        "result": "6 tháng 12, 2025, Không có thời gian, B7K1",
-        "date": "6 tháng 12, 2025"
-      },
-      {
-        "result": "9 tháng 12, 2025, Không có thời gian, B8K1",
-        "date": "9 tháng 12, 2025"
-      }
-    ]
-  },
-  "Rucao_KY_Tiên & Linh": {
-    "teacher": "Kim Yến",
-    "class": [
-      {
-        "result": "13 tháng 11, 2025, Không có thời gian, B1K3",
-        "date": "13 tháng 11, 2025"
-      },
-      {
-        "result": "13 tháng 11, 2025, Không có thời gian, B1K3",
-        "date": "13 tháng 11, 2025"
-      },
-      {
-        "result": "16 tháng 11, 2025, Không có thời gian, B2K3",
-        "date": "16 tháng 11, 2025"
-      },
-      {
-        "result": "20 tháng 11, 2025, Không có thời gian, B3K3",
-        "date": "20 tháng 11, 2025"
-      },
-      {
-        "result": "23 tháng 11, 2025, Không có thời gian, B4K3",
-        "date": "23 tháng 11, 2025"
-      },
-      {
-        "result": "27 tháng 11, 2025, Không có thời gian, B5K3",
-        "date": "27 tháng 11, 2025"
-      },
-      {
-        "result": "30 tháng 11, 2025, Không có thời gian, B6K3",
-        "date": "30 tháng 11, 2025"
-      },
-      {
-        "result": "5 tháng 12, 2025, Không có thời gian, B7K3",
-        "date": "5 tháng 12, 2025"
-      },
-      {
-        "result": "7 tháng 12, 2025, Không có thời gian, B8K3",
-        "date": "7 tháng 12, 2025"
-      }
-    ]
-  },
   "Rucao_KY_Trường Ann": {
     "teacher": "Kim Yến",
     "class": [
@@ -189,6 +37,43 @@
       {
         "result": "22 tháng 11, 2025, Không có thời gian, B8K3",
         "date": "22 tháng 11, 2025"
+      }
+    ]
+  },
+  "Rucao_VA_Cơ bản tháng 9": {
+    "teacher": "Vân Anh",
+    "class": [
+      {
+        "result": "4 tháng 11, 2025, Không có thời gian, B1K3",
+        "date": "4 tháng 11, 2025"
+      },
+      {
+        "result": "6 tháng 11, 2025, Không có thời gian, B2K3",
+        "date": "6 tháng 11, 2025"
+      },
+      {
+        "result": "11 tháng 11, 2025, Không có thời gian, B3K3",
+        "date": "11 tháng 11, 2025"
+      },
+      {
+        "result": "13 tháng 11, 2025, Không có thời gian, B4K3",
+        "date": "13 tháng 11, 2025"
+      },
+      {
+        "result": "18 tháng 11, 2025, Không có thời gian, B5K3",
+        "date": "18 tháng 11, 2025"
+      },
+      {
+        "result": "20 tháng 11, 2025, Không có thời gian, B6K3",
+        "date": "20 tháng 11, 2025"
+      },
+      {
+        "result": "25 tháng 11, 2025, Không có thời gian, B7K3",
+        "date": "25 tháng 11, 2025"
+      },
+      {
+        "result": "27 tháng 11, 2025, Không có thời gian, B8K3",
+        "date": "27 tháng 11, 2025"
       }
     ]
   }

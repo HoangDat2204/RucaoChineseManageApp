@@ -447,7 +447,7 @@ function populateClassDetails(teacherName, className) {
         return a.localeCompare(b);
     });
     if (sortedMemberNames.length === 0) {
-        memberTableContainer.innerHTML = 'Hiện tại chưa có học viên, nhấn nút bên dưới để thêm<button class="btn-circle-text" id="huge_one">+</button></div>';
+        memberTableContainer.innerHTML = 'Hiện tại chưa có học viên, nhấn nút bên dưới để thêm<button class="btn-circle-text" id="huge_one"></button></div>';
         memberTableContainer.style.textAlign = 'center';
         memberTableContainer.style.justifyItems = 'center';
         memberTableContainer.style.fontWeight = 'bold';
@@ -456,7 +456,7 @@ function populateClassDetails(teacherName, className) {
     } else {
         const headerRow = document.createElement('div');
         headerRow.className = 'member-table-header';
-        headerRow.innerHTML = '<div class="member-table-cell header-info-cell">Học viên <button class="btn-circle-text"  id="smaller_one">+</button></div>';
+        headerRow.innerHTML = '<div class="member-table-cell header-info-cell">Học viên <button class="btn-circle-text"  id="smaller_one"></button></div>';
         const allCourseKeys = new Set();
         sortedMemberNames.forEach(name => Object.keys(members[name].TuitionFee || {}).forEach(key => allCourseKeys.add(key)));
         const sortedAllCourseKeys = Array.from(allCourseKeys).sort((a, b) => parseInt(a.replace('K', '')) - parseInt(b.replace('K', '')));
