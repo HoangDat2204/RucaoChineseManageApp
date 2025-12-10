@@ -21,6 +21,9 @@ const editBtn = document.querySelector('.btn-icon-only'); // Nút cây bút
 const infoItemSchedule = editBtn.closest('.info-item'); // Container cha to nhất
 const scheduleList = document.getElementById('detail-study-schedule'); // Khu vực chứa các ngày
 const headerTitle = document.getElementById('schedult-header'); // Header để đổi nút 
+const breakList = document.getElementById('detail-break-list');
+const addStudentBtn = document.getElementById('add-student-btn');
+const newStudentNameInput = document.getElementById('student-name');
 
 
 let teacherClassData = null; // Biến duy nhất để lưu dữ liệu
@@ -419,11 +422,17 @@ function populateClassDetails(teacherName, className) {
     } else {
         scheduleContainer.textContent = 'Lịch không cố định';
     }
+
     document.getElementById('detail-class-type').textContent = classDetails.loaiLop || 'N/A';
-    document.getElementById('detail-total-sessions').textContent = `${Object.keys(classDetails.buoiDaHoc || {}).length} buổi`;
+    let Class_abnormal_number = Object.values(classDetails.buoibatthuong)
+                            .filter(buoi => buoi[5] === true).length;
+
+    let Class_normal = Object.keys(classDetails.buoiDaHoc || {}).length;
+    document.getElementById('detail-total-sessions').textContent = `${(Number(Class_abnormal_number) + Number(Class_normal))} buổi`;
 
     // Tab Thành viên
     memberTableContainer.innerHTML = '';
+    memberTableContainer.style = null;
     const members = classDetails.Members || {};
     const sortedMemberNames = Object.keys(members).sort((a, b) => {
         const statusA = members[a].isStudying === "True";
@@ -438,11 +447,16 @@ function populateClassDetails(teacherName, className) {
         return a.localeCompare(b);
     });
     if (sortedMemberNames.length === 0) {
-        memberTableContainer.innerHTML = '<p style="padding: 20px; text-align: center;">Chưa có thành viên nào trong lớp.</p>';
+        memberTableContainer.innerHTML = 'Hiện tại chưa có học viên, nhấn nút bên dưới để thêm<button class="btn-circle-text" id="huge_one">+</button></div>';
+        memberTableContainer.style.textAlign = 'center';
+        memberTableContainer.style.justifyItems = 'center';
+        memberTableContainer.style.fontWeight = 'bold';
+        memberTableContainer.style.fontSize = '20px';
+        memberTableContainer.style.padding = '30px';
     } else {
         const headerRow = document.createElement('div');
         headerRow.className = 'member-table-header';
-        headerRow.innerHTML = '<div class="member-table-cell header-info-cell">Học viên</div>';
+        headerRow.innerHTML = '<div class="member-table-cell header-info-cell">Học viên <button class="btn-circle-text"  id="smaller_one">+</button></div>';
         const allCourseKeys = new Set();
         sortedMemberNames.forEach(name => Object.keys(members[name].TuitionFee || {}).forEach(key => allCourseKeys.add(key)));
         const sortedAllCourseKeys = Array.from(allCourseKeys).sort((a, b) => parseInt(a.replace('K', '')) - parseInt(b.replace('K', '')));
@@ -494,10 +508,11 @@ function populateClassDetails(teacherName, className) {
         const sessionInfo = BreakSessions[breakDate];
         const listItem = document.createElement('li');
         listItem.className = 'offdates-row';
-        listItem.innerHTML = `<span class="break-date">${days[new Date(breakDate).getDay()]}, ${breakDate.split('-').reverse().join('/')}</span><span class="break-reason">${sessionInfo.lyDo || 'Lí do chưa xác định'}</span>`;
+        listItem.innerHTML = `<span class="break-date">${days[new Date(breakDate).getDay()]}, ${breakDate.split('-').reverse().join('/')}</span><span class="break-reason">${sessionInfo|| 'Lí do chưa xác định'}</span>`;
         breakList.appendChild(listItem);
     });
 
+    reasons = document.querySelectorAll('.break-reason');
     const abnormalList = document.getElementById('detail-abnormal-list');
     
     if (abnormalList) {
@@ -1261,3 +1276,78 @@ function restoreEditButton() {
 }
 
 
+// 2. Duyệt qua từng thẻ và gán sự kiện click
+
+breakList.addEventListener('dblclick', (e) => {
+    if (e.target.closest('.break-date')) {
+        // Nếu click vào ô học phí, không làm gì cả, để listener 'change' xử lý
+        return; 
+    }
+    const memberInfoCell = e.target.closest('.break-reason');
+    if (memberInfoCell) {
+        let isSaving = false; 
+        const parent = memberInfoCell.parentElement;
+        const Break_day_div = parent.querySelector('.break-date');
+        let datestring = Break_day_div.textContent.match(/\d{2}\/\d{2}\/\d{4}/)[0];
+        let parts = datestring.split('/');
+        let dateonly = `${parts[2]}-${parts[1]}-${parts[0]}`;
+        
+        const currentText = memberInfoCell.innerText;
+
+        // 3. Tạo thẻ Input
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = currentText;
+        input.className = 'edit-break-input'; // Thêm class để style CSS
+
+        // 4. Xóa nội dung cũ và chèn Input vào
+        memberInfoCell.innerHTML = ''; 
+        memberInfoCell.appendChild(input);
+
+        // 5. Tự động focus vào input để gõ luôn
+        input.focus();
+
+        // --- HÀM LƯU DỮ LIỆU ---
+        function saveContent() {
+            if (isSaving) return;
+            isSaving = true;
+            const newText = input.value;
+            
+            teacherClassData[currentClassInfo.teacher]['Class'][currentClassInfo.className]['buoiNghi'][dateonly] = newText;
+            sessionStorage.setItem('teacherClassDB', JSON.stringify(teacherClassData));
+            memberInfoCell.innerHTML = newText;
+        }
+
+        // 6. Xử lý khi click ra ngoài (Blur) -> Lưu
+        input.addEventListener('blur', function() {
+            saveContent();
+        });
+
+        // 7. Xử lý khi ấn Enter -> Lưu
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Ngăn hành vi mặc định
+                saveContent();
+            }
+        });      
+        }
+});
+
+
+addStudentBtn.addEventListener('click', () => {
+    const studentName = newStudentNameInput.value.trim();
+    if (studentName) {
+        addStudentRow(studentName);
+        newStudentNameInput.value = ''; // Xóa ô input
+        newStudentNameInput.focus(); // Focus lại vào ô input
+    } else {
+        alert("Vui lòng nhập tên học viên.");
+    }
+});
+
+newStudentNameInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Ngăn hành vi mặc định (như submit form)
+        addStudentBtn.click(); // Giả lập một cú click vào nút "+"
+    }
+});

@@ -197,6 +197,46 @@
             </form>
         </div>
     </div>
+
+    <div id="add-student-modal" class="modal-overlay" style="display: flex;">
+        <div class="modal-content">
+            <button id="close-student-modal-btn" class="close-btn">&times;</button>
+            <h2>Thêm học sinh mới</h2>
+            
+            <!-- Form để nhập thông tin -->
+            <form id="add-student-form">
+                <div class="form-group" style="display: flex;">
+                    <input type="text" id="student-name" name="StudentName" placeholder="Nhập tên học viên" required>
+                    <button type="button" id="add-student-btn" class="btn-primary">+</button>
+                </div>
+            </form>
+            <div class="student-list-container">
+                <table id="student-table">
+                    <thead>
+                        <tr>
+                            <th>Tên học viên</th>
+                            <th>K1</th>
+                            <th>K2</th>
+                            <th>K3</th>
+                            <th></th> <!-- Cột cho nút xóa -->
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body">
+                        <!-- JS sẽ điền các hàng học viên vào đây -->
+                        <!-- Ví dụ một hàng -->
+                        <tr>
+                            <td>Nguyễn Văn An</td>
+                            <td><input type="checkbox" class="tuition-cb"></td>
+                            <td><input type="checkbox" class="tuition-cb"></td>
+                            <td><input type="checkbox" class="tuition-cb"></td>
+                            <td><button class="remove-student-btn">×</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <script src = "../script/Classmange.js"></script>
 
 </body>

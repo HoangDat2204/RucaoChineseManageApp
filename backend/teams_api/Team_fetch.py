@@ -521,7 +521,7 @@ def process_class_messages(class_name, class_data):
                 curr = start_date_obj
                 while curr.date() <= now.date():
                     if (curr.strftime("%Y-%m-%d") not in last_record_buoi_nghi):
-                        is_miss, reason = check_is_missing(curr, "Chưa dạy (Toàn bộ)")
+                        is_miss, reason = check_is_missing(curr, "Lí do chưa xác định")
                         if is_miss:
                             buoi_nghi[curr.strftime("%Y-%m-%d")] = reason
                     curr += timedelta(days=1)
@@ -549,7 +549,7 @@ def process_class_messages(class_name, class_data):
                     while curr < next_d:
                         # Vẫn dùng check_is_missing để đảm bảo tính nhất quán
                         if (curr.strftime("%Y-%m-%d") not in last_record_buoi_nghi):
-                            is_miss, reason = check_is_missing(curr, "Nghỉ/Chưa dạy (Giữa khóa)")
+                            is_miss, reason = check_is_missing(curr, "Lí do chưa xác định")
                             if is_miss:
                                 buoi_nghi[curr.strftime("%Y-%m-%d")] = reason
                         curr += timedelta(days=1)
@@ -558,7 +558,7 @@ def process_class_messages(class_name, class_data):
             curr = last_record + timedelta(days=1)
             while curr.date() <= now.date():
                 if (curr.strftime("%Y-%m-%d") not in last_record_buoi_nghi):
-                    is_miss, reason = check_is_missing(curr, "Nghỉ/Chưa dạy (Mới nhất)")
+                    is_miss, reason = check_is_missing(curr, "Lí do chưa xác định")
                     if is_miss:
                         buoi_nghi[curr.strftime("%Y-%m-%d")] = reason
                 curr += timedelta(days=1)

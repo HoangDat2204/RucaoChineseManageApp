@@ -1285,7 +1285,7 @@
                     "2025-11-27": "Chưa dạy (Toàn bộ)",
                     "2025-11-30": "Chưa dạy (Toàn bộ)",
                     "2025-12-04": "Chưa dạy (Toàn bộ)",
-                    "2025-12-07": "Chưa dạy (Toàn bộ)"
+                    "2025-12-07": "Test chức năng"
                 },
                 "buoibatthuong": {
                     "0a685151-22cc-4cfb-b94b-7dc586e96614": [
@@ -1323,7 +1323,7 @@
                         "WrongTime"
                     ]
                 },
-                "isActive": "True",
+                "isActive": true,
                 "loaiLop": "Personal",
                 "ngayBatDau": "2025-11-27"
             },
@@ -1379,8 +1379,8 @@
                     "2025-11-19": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-24": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-26": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-01": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-03": "Nghỉ/Chưa dạy (Giữa khóa)"
+                    "2025-12-01": "Lí do chưa xác định",
+                    "2025-12-03": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "09036b6e-6011-401f-9bc7-7fe88d3bd92f": [

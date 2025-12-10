@@ -510,6 +510,17 @@ body {
 .break-reason {  color: #6c757d; }
 
 
+.break-reason:hover {
+    transform: translateY(-2px);
+    text-decoration: underline;
+}
+
+.edit-break-input {
+    width: 100%;
+    border: 1px solid #007bff;
+    outline: none;
+    border-radius: 4px;
+}
 
 /* Danh sách bài tập */
 .homework-list {
@@ -799,6 +810,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     overflow: auto; /* Kích hoạt thanh cuộn cho cả 2 chiều */
     max-height: 60vh; /* Giới hạn chiều cao để có thanh cuộn dọc */
     background-color: #fff;
+    position: relative;
 }
 
 /* Hàng tiêu đề (Header) */
@@ -837,6 +849,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     background-color: #f8f9fa; /* Nền của header */
     font-weight: 700;
     color: #495057;
+    border-right: 1px solid #dee2e6;
 }
 .member-table-container {
     border: 1px solid #dee2e6;
@@ -874,6 +887,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     z-index: 1;       /* Nằm trên các ô học phí */
     background-color: #fff; /* Cần có nền để che nội dung bên dưới */
 }
+
 .header-info-cell {
     background-color: #f8f9fa; /* Nền của header */
     font-weight: 700;
@@ -882,6 +896,9 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 /* Ô thông tin học viên (cột 1) */
 .member-info-cell {
+    display: flex;
+    position: relative;
+    flex: 1fr 1fr;
     gap: 15px;
     border-right: 1px solid #dee2e6; /* Đường kẻ phân cách */
 }
@@ -1575,3 +1592,52 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 .btn-confirm-leave:hover { background: #218838; }
 .btn-stay:hover { background: #c82333; }
+
+.btn-circle-text {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #28a745; /* Màu xanh lá */
+    color: white;
+    font-size: 20px; /* Chỉnh kích thước dấu cộng */
+    font-weight: bold;
+    cursor: pointer;
+    
+    /* Dùng Flexbox để căn giữa dấu cộng */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Đẩy dấu cộng lên một chút (vì font chữ thường bị lệch xuống dưới) */
+    transition: 0.2s;
+    margin-left: 10px;
+}
+
+.btn-circle-text:hover {
+    background-color: #218838;
+    transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+
+
+.btn-circle-text#huge_one{
+    font-size: 30px;
+    margin-top: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+
+.btn-circle-text:active {
+    transform: scale(0.9); /* Thu nhỏ còn 90% kích thước gốc */
+    background-color: #1c632c; /* Màu nền tối hơn chút nữa */
+}
+
+.empty-message{
+    border: none;
+}
+.student-list-container {
+    flex-grow: 1; /* Chiếm hết không gian còn lại */
+    overflow-y: auto; /* Có thanh cuộn nếu danh sách dài */
+    }
