@@ -29,6 +29,18 @@
                 "Study_week_day": "Thứ 2, 09:00-10:30 | Thứ 4, 09:00-10:30",
                 "TeamsConversationID": "19:meeting_NTNlNGFiMGQtMWI2YS00NmQ2LWI4OTUtNjBiMWRmNDc4ZjIw@thread.v2",
                 "buoiDaHoc": {
+                    "02b5c445-3257-4933-883c-c06c1e378583": [
+                        "2025-12-15",
+                        "08:59:52",
+                        "10:33:39",
+                        "1 giờ 33 phút 47 giây",
+                        [
+                            "Dai Duong Bui",
+                            "Chloe Dang",
+                            "Chloe"
+                        ],
+                        "Normal"
+                    ],
                     "18e97a07-c078-455a-a843-c010fa4a33f6": [
                         "2025-12-01",
                         "08:58:50",
@@ -51,6 +63,17 @@
                             "CAT TUONG 2002"
                         ],
                         "Absence"
+                    ],
+                    "35416dcc-a363-4f4f-abc2-c2a3d8c5ba37": [
+                        "2025-12-10",
+                        "08:56:45",
+                        "10:36:23",
+                        "1 giờ 39 phút 38 giây",
+                        [
+                            "Dai Duong Bui",
+                            "Chloe Dang"
+                        ],
+                        "Late"
                     ],
                     "46fb5797-58dc-4a9c-841e-fcdc6245d827": [
                         "2025-12-03",
@@ -112,6 +135,18 @@
                             "Chloe Dang"
                         ],
                         "Absence"
+                    ],
+                    "e4c7201f-a956-461e-b4b0-9d3647f419ae": [
+                        "2025-12-17",
+                        "08:59:20",
+                        "10:36:49",
+                        "1 giờ 37 phút 29 giây",
+                        [
+                            "Chloe",
+                            "Dai Duong Bui",
+                            "Chloe Dang"
+                        ],
+                        "Normal"
                     ]
                 },
                 "buoiNghi": {
@@ -230,6 +265,17 @@
                         ],
                         "Absence"
                     ],
+                    "53c7da84-63ab-4e0e-b0c4-c00e83040bac": [
+                        "2025-12-10",
+                        "12:57:16",
+                        "14:37:46",
+                        "1 giờ 40 phút 30 giây",
+                        [
+                            "Le Pham Y Tam - Duoc24",
+                            "Chloe Dang"
+                        ],
+                        "Normal"
+                    ],
                     "6513fd5d-96e3-44f7-82a6-6bb8f5ddd3f5": [
                         "2025-11-26",
                         "12:57:22",
@@ -245,9 +291,22 @@
                 },
                 "buoiNghi": {
                     "2025-11-29": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-03": "Nghỉ/Chưa dạy (Giữa khóa)"
+                    "2025-12-03": "Nghỉ/Chưa dạy (Giữa khóa)",
+                    "2025-12-13": "Lí do chưa xác định",
+                    "2025-12-17": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
+                    "0679482b-6243-4bd8-928c-c61ba930e4f9": [
+                        "2025-12-18",
+                        "08:30:41",
+                        "08:50:17",
+                        "0 giờ 19 phút 36 giây",
+                        [
+                            "Chloe Dang"
+                        ],
+                        false,
+                        "WrongTime"
+                    ],
                     "4a81b874-c779-4a9f-a875-693b410421e3": [
                         "2025-12-06",
                         "08:30:50",
@@ -418,13 +477,25 @@
                             "Như Thảo Nguyễn"
                         ],
                         "Absence"
+                    ],
+                    "e5269b96-28e8-4613-91c5-e2d2613990ee": [
+                        "2025-12-16",
+                        "09:18:51",
+                        "11:01:16",
+                        "1 giờ 42 phút 25 giây",
+                        [
+                            "Ngoc",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
                     ]
                 },
                 "buoiNghi": {
                     "2025-11-04": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-16": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-30": "Nghỉ/Chưa dạy (Mới nhất)",
-                    "2025-12-02": "Nghỉ/Chưa dạy (Mới nhất)"
+                    "2025-12-02": "Nghỉ/Chưa dạy (Mới nhất)",
+                    "2025-12-14": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "58b2d25a-d682-4fa5-a502-73169fc45125": [
@@ -521,6 +592,21 @@
                         ],
                         "Normal"
                     ],
+                    "7c198ea8-11c9-4326-9c2d-f4e21e5e1e58": [
+                        "2025-12-16",
+                        "18:54:31",
+                        "20:46:40",
+                        "1 giờ 52 phút 9 giây",
+                        [
+                            "Vũ Ngọc",
+                            "2273201081253 - NGUYỄN NGỌC QUỲNH NHƯ - 71K28QHCC21",
+                            "HÀ",
+                            "ngọc hân",
+                            "Khanh Ly",
+                            "Hoàng Anh Trần"
+                        ],
+                        "Normal"
+                    ],
                     "9572918a-1a14-428d-ba9f-31de5f584564": [
                         "2025-11-15",
                         "18:56:45",
@@ -611,6 +697,23 @@
                             "Khanh Ly"
                         ],
                         "Normal"
+                    ],
+                    "fa977dd9-b307-43c8-8785-3edcd0f410ec": [
+                        "2025-12-13",
+                        "18:57:06",
+                        "21:02:31",
+                        "2 giờ 5 phút 25 giây",
+                        [
+                            "2273201081253 - NGUYỄN NGỌC QUỲNH NHƯ - 71K28QHCC21",
+                            "Hoàng Anh Trần",
+                            "ngọc hân ",
+                            "Kim Phuong",
+                            "Vũ Ngọc",
+                            "Hilton Nguyen",
+                            "Khanh Ly",
+                            "Hà"
+                        ],
+                        "Absence"
                     ]
                 },
                 "buoiNghi": {},
@@ -670,6 +773,17 @@
                         false,
                         "WrongTime"
                     ],
+                    "7ddda45a-ebae-4def-98cb-cd95aca9d56d": [
+                        "2025-12-11",
+                        "18:25:27",
+                        "18:27:17",
+                        "0 giờ 1 phút 50 giây",
+                        [
+                            "Hien"
+                        ],
+                        false,
+                        "WrongTime"
+                    ],
                     "8ce294b3-33ca-40ba-9892-62f0f8cdf049": [
                         "2025-11-23",
                         "17:53:23",
@@ -691,6 +805,17 @@
                         ],
                         false,
                         "WrongTime"
+                    ],
+                    "ca6512f9-d9bf-4656-a23f-29a707798c8f": [
+                        "2025-12-13",
+                        "18:55:48",
+                        "18:55:52",
+                        "0 giờ 0 phút 4 giây",
+                        [
+                            "ngọc hân"
+                        ],
+                        false,
+                        "EndSoon"
                     ],
                     "e087a9c2-923b-4804-99b1-6a187572447b": [
                         "2025-11-15",
@@ -740,6 +865,28 @@
                 "Study_week_day": "Thứ 4, 19:00-20:30 | Thứ 7, 20:30-22:00",
                 "TeamsConversationID": "19:meeting_ZWFmZTQ3OWEtNDgyOS00MTFmLWI3NzktOWNmMDM1MDdmOGIx@thread.v2",
                 "buoiDaHoc": {
+                    "290923f7-e1af-46ce-af61-5183fcf1961d": [
+                        "2025-12-17",
+                        "18:58:01",
+                        "20:31:37",
+                        "1 giờ 33 phút 36 giây",
+                        [
+                            "Nguyen An",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
+                    ],
+                    "5d635100-124a-4fbc-b7e7-21d546b63efa": [
+                        "2025-12-10",
+                        "18:58:08",
+                        "20:36:50",
+                        "1 giờ 38 phút 42 giây",
+                        [
+                            "Nguyen An",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
+                    ],
                     "6e10f314-2a6e-46fb-b72c-3bba33c7a965": [
                         "2025-11-19",
                         "19:00:11",
@@ -778,9 +925,33 @@
                 "buoiNghi": {
                     "2025-11-26": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-29": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-06": "Nghỉ/Chưa dạy (Mới nhất)"
+                    "2025-12-06": "Nghỉ/Chưa dạy (Mới nhất)",
+                    "2025-12-13": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
+                    "001a3769-d203-4aa4-b046-6fda6ebed530": [
+                        "2025-12-13",
+                        "20:05:52",
+                        "22:06:43",
+                        "2 giờ 0 phút 51 giây",
+                        [
+                            "Nguyen An",
+                            "Khanh Ly"
+                        ],
+                        true,
+                        "WrongTime"
+                    ],
+                    "49942e0a-ea08-46ca-a8ca-83caf50ff7dd": [
+                        "2025-12-10",
+                        "18:57:41",
+                        "18:58:01",
+                        "0 giờ 0 phút 20 giây",
+                        [
+                            "Khanh Ly"
+                        ],
+                        false,
+                        "EndSoon"
+                    ],
                     "78b07da2-eb93-4343-9fe7-472e80eba94b": [
                         "2025-11-14",
                         "22:35:57",
@@ -852,6 +1023,29 @@
                         ],
                         "Normal"
                     ],
+                    "a431804e-c96d-47d9-a71c-276f36d1a5ff": [
+                        "2025-12-18",
+                        "09:23:26",
+                        "11:28:07",
+                        "2 giờ 4 phút 41 giây",
+                        [
+                            "huyền",
+                            "Khanh Ly",
+                            "Ly Khanh"
+                        ],
+                        "Normal"
+                    ],
+                    "d0b346b8-e2e3-4f87-920d-2f9bdfb2f50b": [
+                        "2025-12-15",
+                        "09:31:41",
+                        "10:49:00",
+                        "1 giờ 17 phút 19 giây",
+                        [
+                            "thanh huyện",
+                            "Khanh Ly"
+                        ],
+                        "EndSoon"
+                    ],
                     "d2986a9b-e613-4d47-8d8d-c4e32fc4ae40": [
                         "2025-12-01",
                         "09:23:42",
@@ -881,7 +1075,8 @@
                     "2025-11-17": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-20": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-27": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-04": "Nghỉ/Chưa dạy (Mới nhất)"
+                    "2025-12-04": "Nghỉ/Chưa dạy (Mới nhất)",
+                    "2025-12-11": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "0649e80a-21e5-4e06-89f4-4aa115b9ce5a": [
@@ -906,6 +1101,18 @@
                             "phạm thanh huyền"
                         ],
                         true,
+                        "WrongTime"
+                    ],
+                    "916ca671-9ee0-4974-bbb1-804e37b058b4": [
+                        "2025-12-11",
+                        "09:14:32",
+                        "11:06:28",
+                        "1 giờ 51 phút 56 giây",
+                        [
+                            "phạm thanh huyền",
+                            "Khanh Ly"
+                        ],
+                        false,
                         "WrongTime"
                     ],
                     "b214976b-401e-436f-9b6f-5e08d65e4803": [
@@ -993,6 +1200,28 @@
                         ],
                         "Normal"
                     ],
+                    "a4040a38-1df7-4e5d-8b38-7fd3d67bf473": [
+                        "2025-12-15",
+                        "18:49:55",
+                        "20:26:04",
+                        "1 giờ 36 phút 9 giây",
+                        [
+                            "kimm",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
+                    ],
+                    "b825c346-48f8-4c75-b4f3-c93589806a12": [
+                        "2025-12-19",
+                        "18:58:22",
+                        "20:28:50",
+                        "1 giờ 30 phút 28 giây",
+                        [
+                            "Khanh Ly",
+                            "kimm"
+                        ],
+                        "Normal"
+                    ],
                     "c76c4c6f-e2b3-4da8-931a-e6ebcf97e327": [
                         "2025-11-24",
                         "18:54:55",
@@ -1026,6 +1255,17 @@
                             "Khanh Ly"
                         ],
                         "Normal"
+                    ],
+                    "f1344ccc-f9e2-41de-8ce7-738651af6cdf": [
+                        "2025-12-12",
+                        "19:04:42",
+                        "20:24:50",
+                        "1 giờ 20 phút 8 giây",
+                        [
+                            "Khanh Ly",
+                            "kimm"
+                        ],
+                        "EndSoon"
                     ]
                 },
                 "buoiNghi": {
@@ -1108,6 +1348,17 @@
                 "Study_week_day": "Thứ 5, 19:00-20:30 | Chủ Nhật, 19:00-20:30",
                 "TeamsConversationID": "19:meeting_YzFkN2Q1ZTEtZTcwMy00YjY0LTgxOTQtZjMxYzlhZDIxYmRj@thread.v2",
                 "buoiDaHoc": {
+                    "319bde29-efd2-4d5a-a7a0-9a1860eec6a6": [
+                        "2025-12-11",
+                        "18:56:17",
+                        "20:26:38",
+                        "1 giờ 30 phút 21 giây",
+                        [
+                            "Phụng Đinh",
+                            "Khanh Ly"
+                        ],
+                        "Normal"
+                    ],
                     "347aea78-d9b5-40f4-99b7-0c25734cf97e": [
                         "2025-11-27",
                         "18:54:56",
@@ -1152,6 +1403,17 @@
                         ],
                         "Normal"
                     ],
+                    "e5109f8f-1627-4629-a69c-afbaf2b90cf0": [
+                        "2025-12-14",
+                        "18:56:54",
+                        "20:30:41",
+                        "1 giờ 33 phút 47 giây",
+                        [
+                            "Khanh Ly",
+                            "Phụng Đinh"
+                        ],
+                        "Normal"
+                    ],
                     "ee75fd7d-bb44-4299-8c0d-e6b1ef73914f": [
                         "2025-12-07",
                         "18:46:22",
@@ -1165,7 +1427,8 @@
                     ]
                 },
                 "buoiNghi": {
-                    "2025-11-23": "Nghỉ/Chưa dạy (Giữa khóa)"
+                    "2025-11-23": "Nghỉ/Chưa dạy (Giữa khóa)",
+                    "2025-12-18": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "1673ede2-59d6-4852-8d85-fc3a954cebc1": [
@@ -1247,6 +1510,17 @@
                 "Study_week_day": "Thứ 5, 10:00-11:30 | Chủ Nhật, 10:00-11:30",
                 "TeamsConversationID": "19:meeting_ZjAwZGIyOTQtODY0Ny00YjVlLWFiZTEtMDcwZWJkMjFkMDVh@thread.v2",
                 "buoiDaHoc": {
+                    "0eaf7e00-ac1a-43ba-86cc-bf2b4db904f5": [
+                        "2025-12-14",
+                        "10:15:55",
+                        "12:02:06",
+                        "1 giờ 46 phút 11 giây",
+                        [
+                            "yen",
+                            "Dan"
+                        ],
+                        "Absence"
+                    ],
                     "1c6d2907-aa57-456f-9f84-b8e37489f12b": [
                         "2025-12-04",
                         "10:01:16",
@@ -1255,6 +1529,28 @@
                         [
                             "Dan",
                             "yen"
+                        ],
+                        "Absence"
+                    ],
+                    "a2cdc2be-9db9-469f-b127-23e7fb2d01ce": [
+                        "2025-12-11",
+                        "10:02:44",
+                        "11:46:44",
+                        "1 giờ 44 phút 0 giây",
+                        [
+                            "yen",
+                            "Dan"
+                        ],
+                        "Absence"
+                    ],
+                    "ae640584-2ecf-4379-b9a0-894cefc968d5": [
+                        "2025-12-18",
+                        "10:07:26",
+                        "11:52:29",
+                        "1 giờ 45 phút 3 giây",
+                        [
+                            "yen",
+                            "Dan"
                         ],
                         "Absence"
                     ],
@@ -1371,6 +1667,17 @@
                             "yen"
                         ],
                         "Absence"
+                    ],
+                    "d5551bab-ea3b-45d5-9492-4ad03a09e2a4": [
+                        "2025-12-15",
+                        "14:59:03",
+                        "16:20:28",
+                        "1 giờ 21 phút 25 giây",
+                        [
+                            "yen",
+                            "Hà Phạm"
+                        ],
+                        "Absence"
                     ]
                 },
                 "buoiNghi": {
@@ -1380,7 +1687,9 @@
                     "2025-11-24": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-26": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-12-01": "Lí do chưa xác định",
-                    "2025-12-03": "Lí do chưa xác định"
+                    "2025-12-03": "Lí do chưa xác định",
+                    "2025-12-10": "Lí do chưa xác định",
+                    "2025-12-17": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "09036b6e-6011-401f-9bc7-7fe88d3bd92f": [
@@ -1427,6 +1736,18 @@
                         ],
                         false,
                         "EndSoon"
+                    ],
+                    "e4a53b79-e58d-4bbd-8858-3768ed15f163": [
+                        "2025-12-12",
+                        "15:02:15",
+                        "16:42:12",
+                        "1 giờ 39 phút 57 giây",
+                        [
+                            "yen",
+                            "Hà Phạm"
+                        ],
+                        true,
+                        "WrongTime"
                     ]
                 },
                 "isActive": "True",
@@ -1534,6 +1855,24 @@
                         ],
                         "Normal"
                     ],
+                    "8546d33a-b569-4eda-a7db-09552f31b637": [
+                        "2025-12-17",
+                        "20:23:15",
+                        "22:04:53",
+                        "1 giờ 41 phút 38 giây",
+                        [
+                            "Diep",
+                            "phamdotramy95@gmail.com",
+                            "Diệp",
+                            "Nguyen Nguyen",
+                            "cao thuy oanh",
+                            "TRUONG TUYET MAI",
+                            "Ngọc Yến",
+                            "TỐNG KHÁNH HUYỀN",
+                            "Quynh Anh"
+                        ],
+                        "Normal"
+                    ],
                     "8bc00c23-f13b-4ab5-a45a-03d1f2fdd87d": [
                         "2025-12-08",
                         "20:16:27",
@@ -1597,6 +1936,24 @@
                         ],
                         "Absence"
                     ],
+                    "caa60f6e-13f8-413f-9c2f-fd9edc7bdcba": [
+                        "2025-12-15",
+                        "20:27:38",
+                        "21:53:05",
+                        "1 giờ 25 phút 27 giây",
+                        [
+                            "phamdotramy95@gmail.com",
+                            "Nguyen Nguyen",
+                            "Diệp",
+                            "cao thuy oanh",
+                            "TRUONG TUYET MAI",
+                            "Ngọc Yến",
+                            "Vi Quân",
+                            "TỐNG KHÁNH HUYỀN",
+                            "Tran Duy"
+                        ],
+                        "Normal"
+                    ],
                     "ef9fe31e-11c0-4d55-bbd4-c079dabedfc8": [
                         "2025-11-03",
                         "20:20:16",
@@ -1620,7 +1977,8 @@
                 "buoiNghi": {
                     "2025-11-12": "Nghỉ/Chưa dạy (Giữa khóa)",
                     "2025-11-19": "Nghỉ/Chưa dạy (Giữa khóa)",
-                    "2025-12-01": "Nghỉ/Chưa dạy (Giữa khóa)"
+                    "2025-12-01": "Nghỉ/Chưa dạy (Giữa khóa)",
+                    "2025-12-10": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "04abf7e6-4e11-49b2-849c-f9eb2ce0d137": [
@@ -1722,6 +2080,25 @@
                         ],
                         false,
                         "EndSoon"
+                    ],
+                    "f57b9119-da90-4831-b406-77a69655d940": [
+                        "2025-12-10",
+                        "20:11:43",
+                        "22:09:53",
+                        "1 giờ 58 phút 10 giây",
+                        [
+                            "phamdotramy95@gmail.com",
+                            "Diệp",
+                            "Nguyen Nguyen",
+                            "cao thuy oanh",
+                            "TRUONG TUYET MAI",
+                            "Ngọc Yến",
+                            "TỐNG KHÁNH HUYỀN",
+                            "Quynh Anh",
+                            "Diep"
+                        ],
+                        false,
+                        "WrongTime"
                     ]
                 },
                 "isActive": "True",
@@ -1759,6 +2136,17 @@
                             "TRUONG TUYET MAI"
                         ],
                         "Absence"
+                    ],
+                    "03313d3d-5c56-4fb0-af35-d702c615f664": [
+                        "2025-12-18",
+                        "12:59:49",
+                        "14:30:24",
+                        "1 giờ 30 phút 35 giây",
+                        [
+                            "Như Phúc Đinh Hoàng",
+                            "TRUONG TUYET MAI"
+                        ],
+                        "Late"
                     ],
                     "30b95fd7-185c-45e0-86d0-9542f2cfed95": [
                         "2025-11-13",
@@ -1803,6 +2191,28 @@
                             "TRUONG TUYET MAI"
                         ],
                         "EndSoon"
+                    ],
+                    "9aeffd48-f903-40b4-83da-ba49b56c483b": [
+                        "2025-12-11",
+                        "12:58:38",
+                        "14:08:04",
+                        "1 giờ 9 phút 26 giây",
+                        [
+                            "Như Phúc Đinh Hoàng",
+                            "TRUONG TUYET MAI"
+                        ],
+                        "Absence"
+                    ],
+                    "a74a6cfc-84d1-4161-becb-1d9d3e215e3a": [
+                        "2025-12-16",
+                        "13:05:38",
+                        "14:46:26",
+                        "1 giờ 40 phút 48 giây",
+                        [
+                            "Như Phúc Đinh Hoàng",
+                            "TRUONG TUYET MAI"
+                        ],
+                        "Late"
                     ]
                 },
                 "buoiNghi": {
@@ -1913,7 +2323,7 @@
                 },
                 "Notifications": [
                     0,
-                    0,
+                    1,
                     0
                 ],
                 "Study_week_day": "Thứ 6, 20:30-22:00",
@@ -1935,7 +2345,8 @@
                     "2025-11-14": "Nghỉ/Chưa dạy (Mới nhất)",
                     "2025-11-21": "Nghỉ/Chưa dạy (Mới nhất)",
                     "2025-11-28": "Nghỉ/Chưa dạy (Mới nhất)",
-                    "2025-12-05": "Nghỉ/Chưa dạy (Mới nhất)"
+                    "2025-12-05": "Nghỉ/Chưa dạy (Mới nhất)",
+                    "2025-12-12": "Lí do chưa xác định"
                 },
                 "buoibatthuong": {
                     "62ff0cfa-fe44-49fb-bcbb-f981638f435b": [
@@ -1995,6 +2406,22 @@
                 "Study_week_day": "Thứ 3, 19:00-20:30 | Thứ 5, 19:00-20:30",
                 "TeamsConversationID": "19:meeting_YjRiYmU3MzQtYzQ3Yi00YWE5LTgyNjQtNDY2NWY0ZDYxNThj@thread.v2",
                 "buoiDaHoc": {
+                    "06f88e76-c5e6-49cf-84eb-254f25453dd3": [
+                        "2025-12-18",
+                        "18:57:13",
+                        "20:31:53",
+                        "1 giờ 34 phút 40 giây",
+                        [
+                            "Nhựt uyên",
+                            "Thị Kiều Trinh Nguyễn",
+                            "Pham Anh",
+                            "保 安",
+                            "Gia Maay",
+                            "Jie Qiu",
+                            "Phúc Toàn Đặng"
+                        ],
+                        "Normal"
+                    ],
                     "0fd9316c-a66d-4eec-8ba7-d518f50546da": [
                         "2025-11-27",
                         "18:59:33",
@@ -2066,6 +2493,23 @@
                         ],
                         "Absence"
                     ],
+                    "6d34a3fa-bf3d-4614-95a4-055f54847504": [
+                        "2025-12-11",
+                        "19:00:09",
+                        "20:30:24",
+                        "1 giờ 30 phút 15 giây",
+                        [
+                            "Nhựt uyên",
+                            "Anh Minh",
+                            "Thị Kiều Trinh Nguyễn",
+                            "Pham Anh",
+                            "保 安",
+                            "Jie Qiu",
+                            "Phúc Toàn Đặng",
+                            "Mây"
+                        ],
+                        "Normal"
+                    ],
                     "dd1daa9d-4fed-45ce-af9b-6307ede1bd6d": [
                         "2025-12-02",
                         "18:58:42",
@@ -2080,6 +2524,25 @@
                             "保 安",
                             "Nhựt uyên",
                             "Phúc Toàn Đặng"
+                        ],
+                        "Normal"
+                    ],
+                    "fac854be-5873-463b-b417-3a02ddc93902": [
+                        "2025-12-16",
+                        "18:57:31",
+                        "20:31:14",
+                        "1 giờ 33 phút 43 giây",
+                        [
+                            "Anh Minh",
+                            "Thị Kiều Trinh Nguyễn",
+                            "Pham Anh",
+                            "保 安",
+                            null,
+                            "Như Thảo Nguyễn",
+                            "Gia Mây",
+                            "Nhựt Uyên",
+                            "Phúc Toàn Đặng",
+                            "Jie Qiu"
                         ],
                         "Normal"
                     ]
@@ -2235,9 +2698,92 @@
                 ],
                 "Study_week_day": "Thứ 3, 20:30-22:00 | Thứ 5, 20:30-22:00",
                 "TeamsConversationID": "19:meeting_M2E1N2QxNTItYzU2Yy00MDA4LWI2ODYtMTQ1NDY0Mjk4Y2Fm@thread.v2",
-                "buoiDaHoc": {},
+                "buoiDaHoc": {
+                    "286672b4-1707-4b7a-a19f-38de0a51d634": [
+                        "2025-12-18",
+                        "20:27:57",
+                        "22:03:40",
+                        "1 giờ 35 phút 43 giây",
+                        [
+                            "Bao Chau",
+                            "KHÁNH LY TRẦN",
+                            "2173201081467 - Phan Ngọc Vân Anh - 71K27QHCC30",
+                            "Qinghe",
+                            "Xingwei",
+                            "Van Anh Tran Phuong",
+                            "Tram Anh Nguyen",
+                            "Nguyễn Việt Anh",
+                            "Pham Anh",
+                            "Nhi Nguyen",
+                            "Tâm Như"
+                        ],
+                        "Absence"
+                    ],
+                    "38573ffe-667e-4418-9622-85d991bfef29": [
+                        "2025-12-16",
+                        "20:25:46",
+                        "22:03:58",
+                        "1 giờ 38 phút 12 giây",
+                        [
+                            "Pham Anh",
+                            "Nhi Nguyen",
+                            "Tâm Như",
+                            "Bao Chau",
+                            "KHÁNH LY TRẦN",
+                            "Qinghe",
+                            "Nguyễn Việt Anh",
+                            "Xingwei"
+                        ],
+                        "Absence"
+                    ],
+                    "92593a88-4841-4c31-9fbf-6cc58754f436": [
+                        "2025-12-11",
+                        "20:28:16",
+                        "22:05:44",
+                        "1 giờ 37 phút 28 giây",
+                        [
+                            "KHÁNH LY TRẦN",
+                            "Bao Chau",
+                            "Qinghe",
+                            "2173201081467 - Phan Ngọc Vân Anh - 71K27QHCC30",
+                            "Xingwei",
+                            "Qinghe",
+                            "Anh Tran Phuong Van",
+                            "Tâm Như",
+                            "Tram Anh Nguyen",
+                            "Nguyễn Việt Anh",
+                            "Pham Anh",
+                            "Qinghe",
+                            "Nhi Nguyen"
+                        ],
+                        "Absence"
+                    ]
+                },
                 "buoiNghi": {},
-                "buoibatthuong": {},
+                "buoibatthuong": {
+                    "2b78962a-e9b4-45cb-a341-b522e9c25914": [
+                        "2025-12-11",
+                        "19:49:34",
+                        "19:49:43",
+                        "0 giờ 0 phút 9 giây",
+                        [
+                            "KHÁNH LY TRẦN"
+                        ],
+                        false,
+                        "WrongTime"
+                    ],
+                    "ee5fa3b6-8515-48da-ac72-f6be5c452a6e": [
+                        "2025-12-11",
+                        "02:50:32",
+                        "02:50:34",
+                        "0 giờ 0 phút 2 giây",
+                        [
+                            "Tram Anh Nguyen"
+                        ],
+                        false,
+                        "WrongTime"
+                    ]
+                },
                 "isActive": "True",
                 "loaiLop": "HSK3",
                 "ngayBatDau": "2025-12-11"

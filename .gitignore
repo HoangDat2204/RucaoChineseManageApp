@@ -3,3 +3,5 @@ token.json
 token.txt
 .env
 selenium_profile_for_teams/
+bill.json
+database.json

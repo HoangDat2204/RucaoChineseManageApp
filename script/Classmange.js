@@ -352,7 +352,7 @@ function filterAndDisplaySessions(row_number = 5) {
             row.style.backgroundColor = '#ffe6e6';
         }
         else if(session.type === 'Late'){
-            row.style.backgroundColor = '#DAC8FF';
+            row.style.backgroundColor = '#EBE3FB';
         }
 
         row.innerHTML = `
